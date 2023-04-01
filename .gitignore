@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 wallet.json
-src/utils/txId.js
+src/utils/functionId.js
 
 # Editor directories and files
 .vscode/*

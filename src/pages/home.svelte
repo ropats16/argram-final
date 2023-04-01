@@ -1,13 +1,15 @@
 <script>
-  import { postCache, profile } from "./store";
-  import { deployAr, deployPermawebJS } from "./lib/deploy";
+  // @ts-nocheck
+
+  import { postCache } from "./store";
+  import { deployAr } from "./lib/deploy";
 
   import Deploy from "./dialogs/deploy.svelte";
   import Error from "./dialogs/error.svelte";
   import Confirm from "./dialogs/confirm.svelte";
   import Navbar from "./components/navbar.svelte";
 
-  let files;
+  let files = [];
   let title = "";
   let description = "";
   let topics = "";
@@ -43,60 +45,35 @@
     const addr = await window.arweaveWallet.getActiveAddress();
     try {
       deployDlg = true;
-      // const result = await deployPermawebJS(asset);
       const result = await deployAr(asset);
       deployDlg = false;
       // reset form
       e.target.reset();
-      console.log("This is the result of the new submission", result);
-      // tx = result.id;
-      // $postCache = [
-      //   ...$postCache,
-      //   { id: tx, src: URL.createObjectURL(files[0]) },
-      // ];
+      tx = result.id;
+      $postCache = [
+        ...$postCache,
+        { id: tx, src: URL.createObjectURL(files[0]) },
+      ];
       confirmDlg = true;
     } catch (e) {
       deployDlg = false;
       errorMessage = e.message;
       errorDlg = true;
     }
-    // successful txn example with PermawebJS => "VkTnjz6zo0yC2sV6gttwV1mKFISwze3pJYrEBiT6jqM"
-    // successful txn with Arweave => "rCMt4PcbSOavYW5cfHOvJOGnshs2Pyu-Ullr8UTv2mM"
   }
 
-  $: notValid = !(files && title !== "");
-
-  // ====================== Render Logic ==================================
-
-  import { onMount } from "svelte";
-  import { getAssetData } from "./lib/asset";
-
-  let id = "rpS7iRgOIRKaxpi8PDsL3qnI8GGies29K4i6ep3UdJs";
-  let src = "https://placehold.co/400";
-  let imageMsg = "";
-
-  onMount(async () => {
-    // const i = $postCache.find((img) => (id = img.id));
-    // if (i) {
-    //   src = i.src;
-    //   imageMsg =
-    //     "Currently displaying cache, when deploying directly to arweave, it can take up to 30 minutes to show on chain...";
-    // } else {
-    //   src = `https://arweave.net/${encodeURI(id)}/asset`;
-    // }
-    // let assetData = getAssetData(id);
-  });
+  $: notValid = !(files.length > 0 && title !== "");
 </script>
 
-<!-- <Navbar /> -->
+<Navbar />
 <main>
   <section class="hero min-h-screen bg-base-100 items-start">
     <div class="flex flex-col items-center justify-start">
       <p>Upload</p>
       <form class="form mt-16 px-4 md:px-0" on:submit|preventDefault={doDeploy}>
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col md:flex-row md:space-x-16 justify-center">
           <div>
-            {#if files && files[0]}
+            {#if files[0]}
               <img
                 class="border-2 border-secondary w-full md:w-[500px] md:h-[350px] object-contain"
                 src={URL.createObjectURL(files[0])}
@@ -137,7 +114,7 @@
           </div>
           <div>
             <div class="form-control">
-              <label for="title" class="label">Title *</label>
+              <label for="title" class="label" required>Title *</label>
               <input
                 id="title"
                 class="input input-bordered"
@@ -172,43 +149,6 @@
         </div>
       </form>
     </div>
-  </section>
-  <section class="hero min-h-screen bg-base-100">
-    {#await getAssetData() then assets}
-      <div class="flex-col">
-        {#each assets as asset}
-          <div
-            class="hero-content w-[350px] md:w-full py-5 m-0 flex-col md:flex-row md:space-x-4"
-          >
-            <div class="md:w-1/2 px-0 mx-0 grid place-items-center">
-              {#if asset.type === "image"}
-                <img
-                  class="h-[400px] w-full md:w-[500px] object-contain"
-                  src={asset.image}
-                  alt={asset.title}
-                />
-              {/if}
-              {#if imageMsg !== ""}
-                <p>{imageMsg}</p>
-              {/if}
-            </div>
-            <div class="w-[325px] md:w-1/2 px-0 mx-0 md:ml-8">
-              <div class="mb-4 px-0 mx-0 flex items-start justify-between">
-                <h1 class="text-3xl">{asset.title}</h1>
-              </div>
-              <p class="text-xl">{asset.description}</p>
-              {#if asset.topics.length > 0}
-                <p class="mt-4 text-sm">Topics: {asset.topics.join(", ")}</p>
-              {/if}
-              <p class="text-md">
-                {new Date(asset.timestamp)}
-              </p>
-            </div>
-          </div>
-          <hr />
-        {/each}
-      </div>
-    {/await}
   </section>
 </main>
 <Deploy open={deployDlg} />
