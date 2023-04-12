@@ -118,6 +118,11 @@
   dependencies:
     xss "^1.0.8"
 
+"@auth0/auth0-spa-js@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@auth0/auth0-spa-js/-/auth0-spa-js-2.0.4.tgz#81f6b5d9f72617ed30ee53cdf27dcd7a216bf2da"
+  integrity sha512-NgD6Fkm5Xnbned1VjhEW8irm1/Y8AWtdSLexgLXNwwBVgfnYicCVBu8w75m2t+4QljXkTcI7IXVEFhVmxMuxaA==
+
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.12.13", "@babel/code-frame@^7.18.6":
   version "7.18.6"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.18.6.tgz#3b25d38c89600baa2dcc219edfa88a74eb2c427a"
@@ -1543,11 +1548,10 @@
   resolved "https://registry.yarnpkg.com/@three-em/node-darwin-arm64/-/node-darwin-arm64-0.3.16.tgz#fa9856200355a26f50ca6e84a8813351353b50c0"
   integrity sha512-vdmw4Oc81vnRgC2n/EpWSNpNPIDDfrnmX4+/AaXUc8IuEbqS7nOakT+x+fbZiwrIuzdBDdPi+56Y/iGIkWoTxQ==
 
-"@three-em/node@^0.3.20", "three-em-0-3-09@npm:@three-em/node@^0.3.09", "three-em-0-3-12@npm:@three-em/node@^0.3.12", "three-em-0-3-13@npm:@three-em/node@^0.3.13", "three-em-0-3-14@npm:@three-em/node@^0.3.14", "three-em-0-3-15@npm:@three-em/node@^0.3.15", "three-em-0-3-16@npm:@three-em/node@^0.3.16", "three-em-0-3-17@npm:@three-em/node@^0.3.17", "three-em-0-3-20@npm:@three-em/node@^0.3.20", "three-em-0-3-21@npm:@three-em/node@^0.3.21":
-  name three-em-0-3-09
-  version "0.3.21"
-  resolved "https://registry.yarnpkg.com/@three-em/node/-/node-0.3.21.tgz#0dbab0fadc2eeb8ab57f2fd305108f9f15247127"
-  integrity sha512-3ij+7ET6IK38ERih2Udrd/24/C0psybh7M/KJaJBQM1AjOyqgkUUULyi1+xqc9Bjdp+t67r0KIIvTgRh4B+rng==
+"@three-em/node@^0.3.22":
+  version "0.3.22"
+  resolved "https://registry.yarnpkg.com/@three-em/node/-/node-0.3.22.tgz#c88a1a8b400c15ec01d93f2f83868597855d8906"
+  integrity sha512-qg4DwMTfQJ1qpGp811/O0PyE0QaJTIUDn4Uq7pbbbVNIUs6Hw2bARUAr3NjenGYLFhd8rrcqy6Nf13UDCRUqZA==
   dependencies:
     detect-libc "^1.0.3"
     jest "^28.1.0"
@@ -2586,7 +2590,7 @@ arweave@=1.11.8:
     bignumber.js "^9.0.2"
     util "^0.12.4"
 
-arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4, arweave@^1.12.4, arweave@^1.13.0:
+arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4, arweave@^1.12.4:
   version "1.13.4"
   resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.4.tgz#5aa6ba22f47b1cc83f1a13ccc6a52cb6abc73e38"
   integrity sha512-445kQ3wtCvubR/LyUZt3wsXHxcDwY9lOlVCpolIxZllLt6U9rLO/iK03ZZrq8t26Nt+aoB1qZerMdOz29KS8bA==
@@ -2596,7 +2600,7 @@ arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4, arweave@^1.12.4, arweave@^1.
     base64-js "^1.5.1"
     bignumber.js "^9.0.2"
 
-arweave@^1.10.15, arweave@^1.10.16:
+arweave@^1.10.15, arweave@^1.10.16, arweave@^1.13.5:
   version "1.13.5"
   resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.5.tgz#0bd28aae9d0e9fc66df45217661b08f57658c090"
   integrity sha512-bxXoxmQF1OVXw2QFjD9m29Oo+lwUSvb2mzli494BRFGCfSSTBpE5Fp9f65HmmGEUURCL4xS17J6wBjLm1efrig==
@@ -2692,6 +2696,15 @@ axios@^0.25.0:
   integrity sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==
   dependencies:
     follow-redirects "^1.14.7"
+
+axios@^1.3.4:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-1.3.5.tgz#e07209b39a0d11848e3e341fa087acd71dadc542"
+  integrity sha512-glL/PvG/E+xCWwV8S6nCHcrfg1exGx7vxyUIivIA1iL7BIh6bePylCfVHwp6k13ao7SATxB6imau2kqY+I67kw==
+  dependencies:
+    follow-redirects "^1.15.0"
+    form-data "^4.0.0"
+    proxy-from-env "^1.1.0"
 
 babel-jest@^28.1.3:
   version "28.1.3"
@@ -3656,6 +3669,11 @@ crypto-browserify@^3.11.0:
     randombytes "^2.0.0"
     randomfill "^1.0.3"
 
+crypto-hash@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/crypto-hash/-/crypto-hash-2.0.1.tgz#46c3732e65a078ea06b8b4ae686db41216f81213"
+  integrity sha512-t4mkp7Vh6MuCZRBf0XLzBOfhkH3nW6YEAotMDSjshVQ1GffCMGdPLSr7pKH0rdXY02jTjAZ7QW2apD0buaZXcQ==
+
 crypto-key-composer@^0.1.0:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/crypto-key-composer/-/crypto-key-composer-0.1.3.tgz#53c394be2e9b1ebb1926e2fa4c1c191598642ba8"
@@ -4433,7 +4451,7 @@ flat@^5.0.2:
   resolved "https://registry.yarnpkg.com/flat/-/flat-5.0.2.tgz#8ca6fe332069ffa9d324c327198c598259ceb241"
   integrity sha512-b6suED+5/3rTpUBdG1gupIl8MPFCAMA0QXwmljLhvCUKcUvdE4gWky9zpuGCcXHOsz4J9wPGNWq6OKpmIzz3hQ==
 
-follow-redirects@^1.14.0, follow-redirects@^1.14.7, follow-redirects@^1.14.9:
+follow-redirects@^1.14.0, follow-redirects@^1.14.7, follow-redirects@^1.14.9, follow-redirects@^1.15.0:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.2.tgz#b460864144ba63f2681096f274c4e57026da2c13"
   integrity sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==
@@ -5681,6 +5699,11 @@ jsonparse@^1.2.0:
   resolved "https://registry.yarnpkg.com/jsonparse/-/jsonparse-1.3.1.tgz#3f4dae4a91fac315f71062f8521cc239f1366280"
   integrity sha512-POQXvpdL69+CluYsillJ7SUhKvytYjW9vG/GKpnf+xP8UWgYEM/RaMzHHofbALDiKbbP1W8UEYmgGl39WkPZsg==
 
+jwt-decode@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-3.1.2.tgz#3fb319f3675a2df0c2895c8f5e9fa4b67b04ed59"
+  integrity sha512-UfpWE/VZn0iP50d8cz9NrZLM9lSWhcJ+0Gt/nm4by88UL+J1SiKN8/5dkjMmbEzwL2CAe+67GsegCbIKtbp75A==
+
 keccak@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/keccak/-/keccak-3.0.3.tgz#4bc35ad917be1ef54ff246f904c2bbbf9ac61276"
@@ -6753,6 +6776,16 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==
 
+othent@^1.0.17:
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/othent/-/othent-1.0.17.tgz#c0c119c975a40be3442d18e8d63e7c258662fe64"
+  integrity sha512-wn2CAXua6Tqw6v6B5KKzc7bZhyiJZiR82MMBdhtZGH/Wj1IPBmAwZDjjl5lrKGHv2Xd/eoIbelgLtMhIDizhcg==
+  dependencies:
+    "@auth0/auth0-spa-js" "^2.0.4"
+    axios "^1.3.4"
+    crypto-hash "^2.0.1"
+    jwt-decode "^3.1.2"
+
 p-limit@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/p-limit/-/p-limit-2.3.0.tgz#3dd33c647a214fdfffd835933eb086da0dc21db1"
@@ -6884,17 +6917,17 @@ pem-jwk@^2.0.0:
   dependencies:
     asn1.js "^5.0.1"
 
-permawebjs@^1.0.53:
-  version "1.0.53"
-  resolved "https://registry.yarnpkg.com/permawebjs/-/permawebjs-1.0.53.tgz#b796dd66003f7315aecef0cb8115e6f0b2e2393c"
-  integrity sha512-sx4/Ve+LsOmM/TUjdjKQzp8cXX2l8P1aLVRT4JOYuwOAQHDM/+9lrBU9KqKE1IJTatS48PdrMkGLY5kMzkUStA==
+permawebjs@^1.0.55:
+  version "1.0.55"
+  resolved "https://registry.yarnpkg.com/permawebjs/-/permawebjs-1.0.55.tgz#39ed49802ac49adfe306280558ad4c96e4d24cd5"
+  integrity sha512-d7vOpwEVVxc6SBDG6KSzIu2OH5HFEifeS1HREWGarUjJ7pyUBXL/GwqmLjPoa7vSvDM3nSl/AjJVMY5UKqcCfg==
   dependencies:
     "@bundlr-network/client" "^0.10.5"
     "@execution-machine/sdk" "^0.1.7"
-    "@three-em/node" "^0.3.20"
-    arweave "^1.13.0"
+    "@three-em/node" "^0.3.22"
+    arweave "^1.13.5"
     arweave-mnemonic-keys "^0.0.9"
-    warp-contracts "^1.2.56"
+    warp-contracts "1.3.3-beta.3"
 
 pg-connection-string@2.5.0:
   version "2.5.0"
@@ -7135,6 +7168,11 @@ protobufjs@^6.11.2:
     "@types/long" "^4.0.1"
     "@types/node" ">=13.7.0"
     long "^4.0.0"
+
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+  integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 ps-tree@^1.2.0:
   version "1.2.0"
@@ -8053,6 +8091,16 @@ text-encoding-utf-8@^1.0.2:
   resolved "https://registry.yarnpkg.com/text-encoding-utf-8/-/text-encoding-utf-8-1.0.2.tgz#585b62197b0ae437e3c7b5d0af27ac1021e10d13"
   integrity sha512-8bw4MY9WjdsD2aMtO0OzOCY3pXGYNx2d2FfHRVUKkiCPDWjKuOlhLVASS+pD7VkLTVjW268LYJHwsnPFlBpbAg==
 
+"three-em-0-3-09@npm:@three-em/node@^0.3.09", "three-em-0-3-12@npm:@three-em/node@^0.3.12", "three-em-0-3-13@npm:@three-em/node@^0.3.13", "three-em-0-3-14@npm:@three-em/node@^0.3.14", "three-em-0-3-15@npm:@three-em/node@^0.3.15", "three-em-0-3-16@npm:@three-em/node@^0.3.16", "three-em-0-3-17@npm:@three-em/node@^0.3.17", "three-em-0-3-20@npm:@three-em/node@^0.3.20", "three-em-0-3-21@npm:@three-em/node@^0.3.21":
+  version "0.3.21"
+  resolved "https://registry.yarnpkg.com/@three-em/node/-/node-0.3.21.tgz#0dbab0fadc2eeb8ab57f2fd305108f9f15247127"
+  integrity sha512-3ij+7ET6IK38ERih2Udrd/24/C0psybh7M/KJaJBQM1AjOyqgkUUULyi1+xqc9Bjdp+t67r0KIIvTgRh4B+rng==
+  dependencies:
+    detect-libc "^1.0.3"
+    jest "^28.1.0"
+  optionalDependencies:
+    "@three-em/node-darwin-arm64" "0.3.16"
+
 through@2, "through@>=2.2.7 <3", through@^2.3.6, through@~2.3, through@~2.3.1:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
@@ -8428,10 +8476,10 @@ warp-contracts-plugin-deploy@^1.0.1:
     arlocal "^1.1.59"
     node-stdlib-browser "^1.2.0"
 
-warp-contracts@^1.2.56:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.3.3.tgz#4dceceb9f86d5e74c2b86208b661c981bdb10e8d"
-  integrity sha512-xxVoM1ETKZXh5TWFRXpRceqKHucyyCf0lwegyDNqx3g/zZXQw9p0Kq7lGSCHWirkVe+Ax+pF/YofDWJ29OVIcw==
+warp-contracts@1.3.3-beta.3:
+  version "1.3.3-beta.3"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.3.3-beta.3.tgz#a5b3e498c4e546d9fcda2ae8b9b64c413777f0e0"
+  integrity sha512-OM5JXAdE7IqKs73wfARf+kR0m1OVoGP0VyhBh91FSds+UCbtWT2HZAGALNzRhbA/igxkjvE6AVDmr3d2jedLWQ==
   dependencies:
     "@idena/vrf-js" "^1.0.1"
     archiver "^5.3.0"

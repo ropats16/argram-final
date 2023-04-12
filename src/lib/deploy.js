@@ -1,20 +1,16 @@
 import { split, map, trim } from "ramda";
-import { createTransaction, signTransaction } from 'permawebjs/transaction';
-import Arweave from 'arweave';
-import fs from 'fs';
+import { createTransaction } from 'permawebjs/transaction';
+import { writeContract } from 'permawebjs/contract';
 import { WarpFactory } from 'warp-contracts';
 import { DeployPlugin } from 'warp-contracts-plugin-deploy';
-import { getAddress } from "permawebjs/wallet";
 
 const warp = WarpFactory.forMainnet().use(new DeployPlugin());
 
-const arweave = Arweave.init({
-  host: 'arweave.net',
-  port: 443,
-  protocol: 'https'
-});
-
 // const SRC = "j9Lk3cTmukZS2-hae9GYxK1CuHtWtHcA1V5-tkIfu5k";
+
+// const SRC = "CKmCX9XX9Dde7qO4pW48jUxFlloEeARzqM89pTI3TnQ" // PermawebJS 1.0.55
+
+// const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE" // PermawebJS 1.0.55 w Comment
 
 const SRC = "rpS7iRgOIRKaxpi8PDsL3qnI8GGies29K4i6ep3UdJs"
 
@@ -46,7 +42,7 @@ export async function deployPermawebJS(asset) {
     {
       name: 'Init-State', value: JSON.stringify({
         creator: addr,
-        ticker: "AGRAM-ASSET",
+        ticker: "ARGRAM-ASSET",
         balances: {
           [addr]: 10000
         },
@@ -63,66 +59,30 @@ export async function deployPermawebJS(asset) {
   map(trim, split(',', asset.topics)).forEach(t => {
     inputTags.push({ name: 'Topic' + t, value: t });
   });
-  //await warp.register(tx.id, "node2");
 
   const transaction = await createTransaction({ data, type: 'data', environment: 'mainnet', options: { tags: inputTags, signAndPost: true } });
 
+  // await warp.register(transaction.transaction.id, 'node2');
+
   console.log("This is the result of posting from PermawebJS", transaction);
 
-  // if (result.status === 400) {
-  //   throw new Error('Not enough $AR in wallet to upload pst!');
-  // } else if (result.status === 200) {
-  //   return result;
-  // } else {
-  //   throw new Error(result.message + ' while trying to upload!')
-  // }
+  if (transaction.postedTransaction.status === 400) {
+    throw new Error('Not enough $AR in wallet to upload pst!');
+  } else if (transaction.postedTransaction.status === 200) {
+    return transaction;
+  } else {
+    throw new Error(transaction.postedTransaction.statusText + ' while trying to upload!')
+  }
 }
 
-export async function deployAr(asset) {
-  const data = await toArrayBuffer(asset.file);
-  const addr = await window.arweaveWallet.getActiveAddress();
+export async function passComment(comment) {
+  // data needed
+  // contract id
+  // writer address
+  // writer comment
 
-  const tx = await arweave.createTransaction({ data })
-  tx.addTag('App-Name', 'SmartWeaveContract')
-  tx.addTag('App-Version', '0.3.0')
-  tx.addTag('Content-Type', asset.file.type)
+  // use permawebJS write function
+  const writeComment = await writeContract({ environment: 'mainnet', contractTxId: comment.id, wallet: 'use_wallet', options: { function: 'addComment', comment: comment.text, user: await window.arweaveWallet.getActiveAddress() } });
 
-  tx.addTag('Contract-Src', SRC)
-  tx.addTag('Init-State', JSON.stringify({
-    creator: addr,
-    ticker: "AGRAM-ASSET",
-    balances: {
-      [addr]: 10000
-    },
-    contentType: asset.file.type,
-    comments: [],
-  }))
-  tx.addTag('Creator', addr)
-  tx.addTag('Title', asset.title)
-  tx.addTag('Description', asset.description)
-  let assetType = asset.file.type.split('/')[0] || 'image'
-  if (assetType === 'application') {
-    assetType = asset.file.type.split('/')[1]
-  }
-  tx.addTag('Type', assetType)
-
-  map(trim, split(',', asset.topics)).forEach(t => {
-    tx.addTag('Topic:' + t, t)
-  })
-
-  await arweave.transactions.sign(tx)
-  const result = await arweave.transactions.post(tx)
-
-  console.log("This is the result of the deploy", result)
-
-  // const { contractTxId } = await warp.register(tx.id, 'node2');
-  // console.log(`Check the data: https://arweave.net/${contractTxId}`);
-
-  if (result.status === 400) {
-    throw new Error('Not enough $AR in wallet to upload pst!')
-  } else if (result.status === 200) {
-    console.log("Transaction with Arweave successful", tx);
-    return tx
-  }
-  throw new Error(result.data + ' while trying to upload!')
+  return writeComment;
 }

@@ -1,221 +1,25 @@
 <script>
-  import { postCache, profile } from "./store";
-  import { deployAr, deployPermawebJS } from "./lib/deploy";
-
-  import Deploy from "./dialogs/deploy.svelte";
-  import Error from "./dialogs/error.svelte";
-  import Confirm from "./dialogs/confirm.svelte";
+  import { Route } from "tinro";
   import Navbar from "./components/navbar.svelte";
-
-  let files;
-  let title = "";
-  let description = "";
-  let topics = "";
-  let deployDlg = false;
-  let errorMessage = "";
-  let errorDlg = false;
-  let confirmDlg = false;
-  let tx = "";
-
-  function showError(msg) {
-    errorMessage = msg;
-    errorDlg = true;
-  }
-
-  async function doDeploy(e) {
-    const asset = {
-      file: files[0],
-      title,
-      description,
-      topics,
-    };
-    if (!window.arweaveWallet) {
-      errorMessage = "Arweave Wallet not found!";
-      errorDlg = true;
-      return;
-    }
-    // connnect
-    await window.arweaveWallet.connect([
-      "ACCESS_ADDRESS",
-      "SIGN_TRANSACTION",
-      "DISPATCH",
-    ]);
-    const addr = await window.arweaveWallet.getActiveAddress();
-    try {
-      deployDlg = true;
-      // const result = await deployPermawebJS(asset);
-      const result = await deployAr(asset);
-      deployDlg = false;
-      // reset form
-      e.target.reset();
-      console.log("This is the result of the new submission", result);
-      // tx = result.id;
-      // $postCache = [
-      //   ...$postCache,
-      //   { id: tx, src: URL.createObjectURL(files[0]) },
-      // ];
-      confirmDlg = true;
-    } catch (e) {
-      deployDlg = false;
-      errorMessage = e.message;
-      errorDlg = true;
-    }
-    // successful txn example with PermawebJS => "VkTnjz6zo0yC2sV6gttwV1mKFISwze3pJYrEBiT6jqM"
-    // successful txn with Arweave => "rCMt4PcbSOavYW5cfHOvJOGnshs2Pyu-Ullr8UTv2mM"
-  }
-
-  $: notValid = !(files && title !== "");
-
-  // ====================== Render Logic ==================================
-
-  import { onMount } from "svelte";
-  import { getAssetData } from "./lib/asset";
-
-  let id = "rpS7iRgOIRKaxpi8PDsL3qnI8GGies29K4i6ep3UdJs";
-  let src = "https://placehold.co/400";
-  let imageMsg = "";
-
-  onMount(async () => {
-    // const i = $postCache.find((img) => (id = img.id));
-    // if (i) {
-    //   src = i.src;
-    //   imageMsg =
-    //     "Currently displaying cache, when deploying directly to arweave, it can take up to 30 minutes to show on chain...";
-    // } else {
-    //   src = `https://arweave.net/${encodeURI(id)}/asset`;
-    // }
-    // let assetData = getAssetData(id);
-  });
+  import Upload from "./pages/upload.svelte";
+  import View from "./pages/view.svelte";
+  import Start from "./pages/start.svelte";
+  import { profile } from "./store";
 </script>
 
-<!-- <Navbar /> -->
+<Navbar />
 <main>
-  <section class="hero min-h-screen bg-base-100 items-start">
-    <div class="flex flex-col items-center justify-start">
-      <p>Upload</p>
-      <form class="form mt-16 px-4 md:px-0" on:submit|preventDefault={doDeploy}>
-        <div class="flex flex-col justify-center">
-          <div>
-            {#if files && files[0]}
-              <img
-                class="border-2 border-secondary w-full md:w-[500px] md:h-[350px] object-contain"
-                src={URL.createObjectURL(files[0])}
-                alt="preview"
-              />
-              <div class="mt-2 flex justify-end">
-                <button on:click={() => (files = [])} class="link">clear</button
-                >
-              </div>
-            {:else}
-              <div class="form-control">
-                <label
-                  for="file"
-                  class="bg-gray-200 h-[200px] md:h-[350px] w-full md:w-[500px] grid place-items-center rounded-xl hover:shadow-xl"
-                >
-                  <div>
-                    <span class="text-gray-400">Select Image 📷</span>
-                  </div>
-                </label>
-                <input
-                  id="file"
-                  type="file"
-                  class="hidden input input-bordered"
-                  bind:files
-                  accept="image/png, image/jpeg, image/gif, image/jpg, image/webp, image/svg+xml"
-                  required
-                />
-                <p
-                  class="py-8 w-full md:w-[500px] bg-whitesmoke-200 text-gray-500 text-sm"
-                >
-                  When uploading images, it is important to note that you are
-                  storing these images on a permanent blockchain and by
-                  uploading you are indicating that you have permission to do
-                  so. NSFW content is not permitted on this service.
-                </p>
-              </div>
-            {/if}
-          </div>
-          <div>
-            <div class="form-control">
-              <label for="title" class="label">Title *</label>
-              <input
-                id="title"
-                class="input input-bordered"
-                bind:value={title}
-                required
-              />
-            </div>
-            <div class="form-control">
-              <label for="desc" class="label">Description</label>
-              <textarea
-                id="desc"
-                class="textarea textarea-bordered"
-                bind:value={description}
-              />
-            </div>
-            <div class="form-control">
-              <label for="topics" class="label">Topics</label>
-              <input
-                id="topics"
-                class="input input-bordered"
-                bind:value={topics}
-              />
-              <p class="label text-sm text-gray-400">
-                Enter a comma-separated list topics (e.g. collection, category,
-                etc)
-              </p>
-            </div>
-            <div class="my-16 space-y-4">
-              <button disabled={notValid} class="btn btn-block">Deploy</button>
-            </div>
-          </div>
-        </div>
-      </form>
-    </div>
-  </section>
-  <section class="hero min-h-screen bg-base-100">
-    {#await getAssetData() then assets}
-      <div class="flex-col">
-        {#each assets as asset}
-          <div
-            class="hero-content w-[350px] md:w-full py-5 m-0 flex-col md:flex-row md:space-x-4"
-          >
-            <div class="md:w-1/2 px-0 mx-0 grid place-items-center">
-              {#if asset.type === "image"}
-                <img
-                  class="h-[400px] w-full md:w-[500px] object-contain"
-                  src={asset.image}
-                  alt={asset.title}
-                />
-              {/if}
-              {#if imageMsg !== ""}
-                <p>{imageMsg}</p>
-              {/if}
-            </div>
-            <div class="w-[325px] md:w-1/2 px-0 mx-0 md:ml-8">
-              <div class="mb-4 px-0 mx-0 flex items-start justify-between">
-                <h1 class="text-3xl">{asset.title}</h1>
-              </div>
-              <p class="text-xl">{asset.description}</p>
-              {#if asset.topics.length > 0}
-                <p class="mt-4 text-sm">Topics: {asset.topics.join(", ")}</p>
-              {/if}
-              <p class="text-md">
-                {new Date(asset.timestamp)}
-              </p>
-            </div>
-          </div>
-          <hr />
-        {/each}
-      </div>
-    {/await}
-  </section>
+  <Route path="/">
+    <Start />
+  </Route>
+  <Route path="/upload">
+    {#if $profile}
+      <Upload />
+    {:else}
+      <Start />
+    {/if}
+  </Route>
+  <Route path="/view">
+    <View />
+  </Route>
 </main>
-<Deploy open={deployDlg} />
-<Error
-  open={errorDlg}
-  msg={errorMessage}
-  on:cancel={() => (errorDlg = false)}
-/>
-
-<Confirm {tx} open={confirmDlg} on:cancel={() => (confirmDlg = false)} />

@@ -26,8 +26,6 @@ export async function getAssetData() {
       )
     }))
   return assets
-
-  //.then(_ => ({ title: 'Test', description: 'Description' }))
 }
 
 function idQuery() {

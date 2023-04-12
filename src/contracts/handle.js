@@ -1,10 +1,12 @@
 export async function handle(state, action) {
   const { input, caller } = action;
-  const owner = caller;
   const balances = state.balances;
+  if (action.input.function == "__init") {
+    state.owner = action.caller;
+  }
   // function to get owner
   if (input.function === 'getOwner') {
-    return { owner }
+    return { result: state.owner }
   }
   // function to get balances
   if (input.function === "balance") {
@@ -27,6 +29,7 @@ export async function handle(state, action) {
       },
     };
   }
+
   // functions to transfer ownership
   if (input.function === 'transfer') {
     const { qty, target } = input
@@ -34,6 +37,7 @@ export async function handle(state, action) {
     ContractAssert(target !== caller, 'target can not be caller')
     ContractAssert(typeof qty === 'number', 'qty MUST be a number')
     ContractAssert(qty > 0, 'qty MUST be greater than zero')
+    ContractAssert(Object.keys(balances).includes(caller))
     ContractAssert(balances[caller] >= qty, 'caller does not have enough qty')
 
     state.balances[caller] -= qty
@@ -47,7 +51,8 @@ export async function handle(state, action) {
   }
   // function to update comments
   if (input.function === 'addComment') {
-    state.comments.push(input.comment);
+    state.comments.push({ comment: input.comment, user: input.user });
+    return { state };
   }
-  return { state };
+  throw new ContractError('input.function not found!')
 }

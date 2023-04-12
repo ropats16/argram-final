@@ -7,9 +7,6 @@ import { NodeGlobalsPolyfillPlugin } from "@esbuild-plugins/node-globals-polyfil
 import notifier from 'vite-plugin-notifier';
 import rollupNodePolyFill from 'rollup-plugin-node-polyfills'
 
-const [schema, host] = process.env.GITPOD_WORKSPACE_URL ? process.env.GITPOD_WORKSPACE_URL.split('://') : [null, null]
-const publicUrl = `5173-${host}`
-
 // https://vitejs.dev/config/
 export default defineConfig({
   base: '',
@@ -30,23 +27,18 @@ export default defineConfig({
       ],
     },
   },
-  build: {
-    target: ['esnext'],
-    rollupOptions: {
-      plugins: [
-        // Enable rollup polyfills plugin
-        // used during production bundling
-        rollupNodePolyFill()
-      ]
-    }
-  },
+  // build: {
+  //   target: ['esnext'],
+  //   rollupOptions: {
+  //     plugins: [
+  //       // Enable rollup polyfills plugin
+  //       // used during production bundling
+  //       rollupNodePolyFill()
+  //     ]
+  //   }
+  // },
   server: {
-    hmr: {
-      clientPort: host ? 443 : 5173,
-      host: host
-        ? publicUrl
-        : "localhost",
-    }
+    port: 3000
   },
   css: {
     postcss: {
