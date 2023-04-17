@@ -1,16 +1,23 @@
 <script>
-  import { Route } from "tinro";
+  import { Route, router } from "tinro";
   import Navbar from "./components/navbar.svelte";
   import Upload from "./pages/upload.svelte";
   import View from "./pages/view.svelte";
   import Start from "./pages/start.svelte";
   import { profile } from "./store";
+
+  router.mode.hash();
+  router.subscribe((_) => window.scrollTo(0, 0));
 </script>
 
 <Navbar />
 <main>
   <Route path="/">
-    <Start />
+    {#if $profile}
+      <Upload />
+    {:else}
+      <Start />
+    {/if}
   </Route>
   <Route path="/upload">
     {#if $profile}
@@ -20,6 +27,10 @@
     {/if}
   </Route>
   <Route path="/view">
-    <View />
+    {#if $profile}
+      <View />
+    {:else}
+      <Start />
+    {/if}
   </Route>
 </main>

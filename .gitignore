@@ -13,6 +13,7 @@ dist-ssr
 *.local
 wallet.json
 src/utils/functionId.js
+yarn.lock
 
 # Editor directories and files
 .vscode/*
