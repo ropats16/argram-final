@@ -39,19 +39,8 @@
       deployDlg = true;
       const result = await deployPermawebJS(asset);
       deployDlg = false;
-      // reset form
       e.target.reset();
       tx = result.transaction.id;
-      $postCache = [
-        ...$postCache,
-        {
-          id: tx,
-          image: URL.createObjectURL(files[0]),
-          title: title,
-          description: description,
-          topics: topics,
-        },
-      ];
       confirmDlg = true;
     } catch (e) {
       deployDlg = false;

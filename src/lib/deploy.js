@@ -1,10 +1,6 @@
 import { split, map, trim } from "ramda";
 import { createTransaction } from 'permawebjs/transaction';
 import { writeContract } from 'permawebjs/contract';
-import { WarpFactory } from 'warp-contracts';
-import { DeployPlugin } from 'warp-contracts-plugin-deploy';
-
-const warp = WarpFactory.forMainnet().use(new DeployPlugin());
 
 // const SRC = "j9Lk3cTmukZS2-hae9GYxK1CuHtWtHcA1V5-tkIfu5k";
 
@@ -12,7 +8,7 @@ const warp = WarpFactory.forMainnet().use(new DeployPlugin());
 
 // const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE" // PermawebJS 1.0.55 w Comment
 
-const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE"
+const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE";
 
 const toArrayBuffer = (file) =>
   new Promise((resolve, reject) => {
@@ -62,13 +58,7 @@ export async function deployPermawebJS(asset) {
     inputTags.push({ name: 'Topic:' + t, value: t });
   });
 
-  console.log("These are input tags", inputTags);
-
   const transaction = await createTransaction({ data, type: 'data', environment: 'mainnet', options: { tags: inputTags, signAndPost: true } });
-
-  // await warp.register(transaction.transaction.id, 'node2');
-
-  console.log("This is the result of posting from PermawebJS", transaction);
 
   if (transaction.postedTransaction.status === 400) {
     throw new Error('Not enough $AR in wallet to upload pst!');

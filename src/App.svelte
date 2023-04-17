@@ -1,4 +1,6 @@
 <script>
+  // @ts-nocheck
+
   import { Route, router } from "tinro";
   import Navbar from "./components/navbar.svelte";
   import Upload from "./pages/upload.svelte";
