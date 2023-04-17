@@ -4,7 +4,6 @@
 
   async function handleConnect() {
     $profile = await othent.logIn();
-    console.log($profile);
   }
 </script>
 
