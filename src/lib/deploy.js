@@ -12,7 +12,7 @@ const warp = WarpFactory.forMainnet().use(new DeployPlugin());
 
 // const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE" // PermawebJS 1.0.55 w Comment
 
-const SRC = "rpS7iRgOIRKaxpi8PDsL3qnI8GGies29K4i6ep3UdJs"
+const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE"
 
 const toArrayBuffer = (file) =>
   new Promise((resolve, reject) => {
@@ -56,9 +56,13 @@ export async function deployPermawebJS(asset) {
     { name: 'Type', value: assetType },
   ];
 
+  console.log("We have asset topics", asset.topics);
+
   map(trim, split(',', asset.topics)).forEach(t => {
-    inputTags.push({ name: 'Topic' + t, value: t });
+    inputTags.push({ name: 'Topic:' + t, value: t });
   });
+
+  console.log("These are input tags", inputTags);
 
   const transaction = await createTransaction({ data, type: 'data', environment: 'mainnet', options: { tags: inputTags, signAndPost: true } });
 
