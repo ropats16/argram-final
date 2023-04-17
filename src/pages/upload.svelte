@@ -11,7 +11,6 @@
   let title = "";
   let description = "";
   let topics = "";
-  let comments = {};
   let deployDlg = false;
   let errorMessage = "";
   let errorDlg = false;
@@ -61,39 +60,12 @@
     }
   }
 
-  async function addComment(e) {
-    const comment = {
-      id: e.target.id,
-      text: comments[e.target.id],
-    };
-
-    if (!window.arweaveWallet) {
-      errorMessage = "Arweave Wallet not found!";
-      errorDlg = true;
-      return;
-    }
-    // connnect
-    await window.arweaveWallet.connect([
-      "ACCESS_ADDRESS",
-      "SIGN_TRANSACTION",
-      "DISPATCH",
-    ]);
-    try {
-      console.log("This is the comment object", comment);
-      // const result = await passComment(comment);
-
-      e.target.reset();
-    } catch (e) {
-      errorMessage = e.message;
-    }
-  }
-
   $: notValid = !(files && title !== "");
 </script>
 
 <section class="hero min-h-screen bg-base-100 items-start">
   <div class="flex flex-col items-center justify-start">
-    <p>Upload</p>
+    <h1 class="text-2xl">Upload</h1>
     <form class="form mt-16 px-4 md:px-0" on:submit|preventDefault={doDeploy}>
       <div class="flex flex-col justify-center">
         <div>
