@@ -1,9 +1,11 @@
 <script>
   import { postCache } from "../store";
-  import { deployPermawebJS, passComment } from "../lib/deploy";
+  import { deployPermawebJS } from "../lib/deploy";
   import Deploy from "../dialogs/deploy.svelte";
   import Error from "../dialogs/error.svelte";
   import Confirm from "../dialogs/confirm.svelte";
+
+  import othent from "othent";
 
   let files;
   let title = "";

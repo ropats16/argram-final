@@ -44,9 +44,6 @@
   </div>
   <div class="navbar-end md:flex">
     {#if $profile}
-      <a href="/home" class="btn btn-ghost">Upload</a>
-      <a href="/hx/{name}" class="btn btn-ghost">My IMGs</a>
-
       <button class="btn btn-ghost" on:click={handleDisconnect}
         >{take(5, name)}...</button
       >
