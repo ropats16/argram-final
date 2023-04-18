@@ -18,7 +18,7 @@
       to show up on the network.
     </blockquote>
     -->
-    <a href="https://arweave.net/{tx}" class="link" target="_blank"
+    <a href="https://arweave.net/tx/{tx}" class="link" target="_blank"
       >View Atomic TX</a
     >
   </div>
