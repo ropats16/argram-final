@@ -15,14 +15,6 @@ console.log(path.join(__dirname, 'src/contracts/handle.js'));
 const contractSource = fs.readFileSync(path.join(__dirname, 'src/contracts/handle.js'), 'utf-8');
 const addr = await getAddress({ key, environment: 'mainnet' });
 
-const inputTags = [
-  {
-    name: 'Init-State', value: JSON.stringify({
-      owner: addr,
-    })
-  },
-];
-
 const newSource = await warp.createSource({ src: contractSource }, new ArweaveSigner(key));
 
 const newSrcId = await warp.saveSource(newSource);

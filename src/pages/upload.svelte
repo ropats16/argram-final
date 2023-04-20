@@ -1,61 +1,57 @@
 <script>
-  import { postCache } from "../store";
-  import { deployPermawebJS } from "../lib/deploy";
+  import { postAsset } from "../lib/post";
   import Deploy from "../dialogs/deploy.svelte";
   import Error from "../dialogs/error.svelte";
   import Confirm from "../dialogs/confirm.svelte";
-
-  import othent from "othent";
+  import { profile } from "../store";
 
   let files;
   let title = "";
   let description = "";
   let topics = "";
+
   let deployDlg = false;
   let errorMessage = "";
   let errorDlg = false;
   let confirmDlg = false;
+
   let tx = "";
 
-  async function doDeploy(e) {
+  $: notValid = !(files && title !== "");
+
+  async function createPost(e) {
     const asset = {
       file: files[0],
       title,
       description,
       topics,
+      username: $profile.given_name + " " + $profile.family_name,
+      userid: $profile.contract_id,
     };
-    if (!window.arweaveWallet) {
-      errorMessage = "Arweave Wallet not found!";
-      errorDlg = true;
-      return;
-    }
-    // connnect
-    await window.arweaveWallet.connect([
-      "ACCESS_ADDRESS",
-      "SIGN_TRANSACTION",
-      "DISPATCH",
-    ]);
+
     try {
       deployDlg = true;
-      const result = await deployPermawebJS(asset);
+      const result = await postAsset(asset);
       deployDlg = false;
+
       e.target.reset();
-      tx = result.transaction.id;
+      files = [];
+
+      console.log(result);
+      tx = result;
       confirmDlg = true;
     } catch (e) {
       deployDlg = false;
+      console.log(e.message);
       errorMessage = e.message;
       errorDlg = true;
     }
   }
-
-  $: notValid = !(files && title !== "");
 </script>
 
 <section class="hero min-h-screen bg-base-100 items-start">
   <div class="flex flex-col items-center justify-start">
-    <h1 class="text-2xl">Upload</h1>
-    <form class="form mt-16 px-4 md:px-0" on:submit|preventDefault={doDeploy}>
+    <form class="form mt-16 px-4 md:px-0" on:submit|preventDefault={createPost}>
       <div class="flex flex-col justify-center">
         <div>
           {#if files && files[0]}
