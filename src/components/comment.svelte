@@ -113,7 +113,7 @@
         class="input input-bordered"
         bind:value={comments[id]}
         required
-        placeholder="Enter comment to enable button"
+        placeholder="Enter comment to enable"
       />
       <p class="label text-sm text-gray-400">Enter a comment</p>
     </div>
