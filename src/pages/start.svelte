@@ -1,12 +1,16 @@
 <script>
+  // imports
   import { profile } from "../store.js";
   import { Othent } from "permawebjs/auth";
 
+  // function to handle a user login
+  // returns the user profile and stores it in $profile which is a cache variable created
   async function handleConnect() {
     $profile = await Othent.logIn();
   }
 </script>
 
+<!-- landing page ui -->
 <main>
   <section class="hero min-h-screen bg-base-100">
     <div class="hero-content flex-col space-y-16">
@@ -16,6 +20,7 @@
         images <br /> as tradeable atomic assets.
       </p>
       <div class="flex space-x-4">
+        <!-- connect button to handle log in -->
         <button class="btn btn-primary" on:click={handleConnect}>Connect</button
         >
       </div>

@@ -7,7 +7,7 @@
   $: name = $profile ? $profile.given_name + " " + $profile.family_name : "";
 
   // function to handle a user login
-  // returns the user profile and stores it in $profile which is a cache variable created by us
+  // returns the user profile and stores it in $profile which is a cache variable created
   async function handleConnect() {
     $profile = await Othent.logIn();
   }
