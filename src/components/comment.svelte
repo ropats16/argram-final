@@ -76,7 +76,6 @@
 <section
   class="hero pb-4 bg-base-100 flex flex-col border-solid border-2 border-slate-300 rounded-lg"
 >
-  <!-- {#await readComments() then commentsArray} -->
   {#if commentsArray.length > 0}
     {#each commentsArray as comment}
       <p
@@ -90,7 +89,6 @@
       </p>
     {/each}
   {/if}
-  <!-- {/await} -->
   <form
     class="form px-4 md:px-12 mx-0 gap-2 flex flex-row items-center justify-center w-full"
     on:submit|preventDefault={addComment}
