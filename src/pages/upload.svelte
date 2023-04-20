@@ -37,7 +37,6 @@
       e.target.reset();
       files = [];
 
-      console.log(result);
       tx = result;
       confirmDlg = true;
     } catch (e) {

@@ -6,7 +6,7 @@ import { DeployPlugin, ArweaveSigner } from "warp-contracts-plugin-deploy";
 
 // const SRC = "H_5nmRZ5jU6Wnn4esxmQdMBq3AyHZ7lFAWmbjfIS5ic" // OTHENT debugger with Warp
 
-const SRC = "FuhMYR3CEGM7xZxGUmI9ZmsN0z4sZFo-tHbjrnm9q-A" // Latest with Warp
+const SRC = "ItMTZxVdxAQIuk-TMEsWNkjtppttGxY3h5d6XRCtnMY" // Latest with Warp
 
 const toArrayBuffer = (file) =>
   new Promise((resolve, reject) => {
@@ -46,6 +46,7 @@ export async function postAsset(asset) {
       },
       contentType: asset.file.type,
       comments: [],
+      likes: {},
     }),
     srcTxId: SRC,
     data: { 'Content-Type': asset.file.type, body: data },

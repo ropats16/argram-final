@@ -1,22 +1,21 @@
 <script>
   import { profile } from "../store.js";
   import { take } from "ramda";
-  import othent from "othent";
+  import { Othent } from "permawebjs/auth";
 
-  $: name = $profile ? $profile.given_name + $profile.family_name : "";
+  $: name = $profile ? $profile.given_name + " " + $profile.family_name : "";
 
   async function handleConnect() {
-    $profile = await othent.logIn();
-    console.log($profile);
+    $profile = await Othent.logIn();
   }
 
   async function handleDisconnect() {
-    await othent.logOut();
+    await Othent.logOut();
     $profile = null;
   }
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 drop-shadow-md mb-10">
   <div class="navbar-start">
     <div class="dropdown dropdown-hover">
       <button class="btn btn-square btn-ghost">
@@ -40,13 +39,12 @@
     </div>
   </div>
   <div class="navbar-center md:flex">
-    <a href="/" class="btn btn-ghost normal-case text-xl">ArGram</a>
+    <a href="/" class="btn btn-ghost normal-case text-2xl">ArGram</a>
   </div>
-  <div class="navbar-end md:flex">
+  <div class="navbar-end md:flex gap-4">
     {#if $profile}
-      <button class="btn btn-ghost" on:click={handleDisconnect}
-        >{take(5, name)}...</button
-      >
+      <button class="btn" disabled>{name}</button>
+      <button class="btn btn-ghost" on:click={handleDisconnect}>Log Out</button>
     {:else}
       <button on:click={handleConnect} class="btn btn-ghost">Connect</button>
     {/if}
