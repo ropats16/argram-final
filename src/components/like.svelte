@@ -41,12 +41,10 @@
 </script>
 
 <section>
-  {#await readLikes() then likes}
-    <p>{Object.keys(likes).length}</p>
-    <button
-      class="btn btn-block"
-      disabled={Object.keys(likes).includes($profile.contract_id)}
-      on:click|preventDefault={likePost}>Like</button
-    >
-  {/await}
+  <p>{Object.keys(likes).length}</p>
+  <button
+    class="btn btn-block"
+    disabled={Object.keys(likes).includes($profile.contract_id)}
+    on:click|preventDefault={likePost}>Like</button
+  >
 </section>
