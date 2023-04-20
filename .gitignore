@@ -16,6 +16,7 @@ src/utils/functionId.js
 yarn.lock
 
 # Editor directories and files
+.vscode
 .vscode/*
 !.vscode/extensions.json
 .idea
