@@ -55,6 +55,7 @@
   }
 </script>
 
+<!-- upload page ui -->
 <section class="hero min-h-screen bg-base-100 items-start">
   <div class="flex flex-col items-center justify-start">
     <!-- input form for calling 'createPost' function -->

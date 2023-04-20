@@ -1,6 +1,5 @@
 <script>
   // imports
-  import { onMount } from "svelte";
   import { getAssetData } from "../lib/queryAssets";
   import Comment from "../components/comment.svelte";
   import { take } from "ramda";
@@ -10,6 +9,7 @@
   let assetData = getAssetData();
 </script>
 
+<!-- view page ui -->
 <section class="hero min-h-screen bg-base-100 flex flex-col">
   <p>Images, comments and likes may take sometime to load...</p>
   <hr class="w-1/2 mt-2" />

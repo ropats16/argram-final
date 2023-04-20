@@ -1,3 +1,4 @@
+// imports
 import { prop, propEq, find, pluck, filter } from 'ramda';
 
 // function to fetch posts create from defined contract source
