@@ -8,11 +8,13 @@
   import Deploy from "../dialogs/deploy.svelte";
   import Error from "../dialogs/error.svelte";
   import Confirm from "../dialogs/confirm.svelte";
+  import { onMount } from "svelte";
 
   export let id = "";
 
   let comments = {};
-  let commentsData = readComments();
+
+  let commentsArray = [];
 
   let deployDlg = false;
   let errorMessage = "";
@@ -46,6 +48,10 @@
 
       tx = res.transactionId;
       confirmDlg = true;
+
+      commentsArray = await readComments();
+
+      confirmDlg = false;
     } catch (e) {
       deployDlg = false;
       errorMessage = e.message;
@@ -57,30 +63,34 @@
     const res = await readContractWOthent({
       contractTxId: id,
     });
-    console.log("=========================My contract state", res);
+    console.log("========================My contract state", res);
 
     return res.state["comments"];
   }
+
+  onMount(async () => {
+    commentsArray = await readComments();
+  });
 </script>
 
 <section
   class="hero pb-4 bg-base-100 flex flex-col border-solid border-2 border-slate-300 rounded-lg"
 >
-  {#await commentsData then commentsArray}
-    {#if commentsArray.length > 0}
-      {#each commentsArray as comment}
-        <p
-          class="text-sm px-4 md:px-12 gap-2 flex flex-row items-center justify-start w-full"
-        >
-          <strong
-            >{comment.username && comment.username != ""
-              ? comment.username
-              : take(5, comment.id)}</strong
-          >: {comment.comment}
-        </p>
-      {/each}
-    {/if}
-  {/await}
+  <!-- {#await readComments() then commentsArray} -->
+  {#if commentsArray.length > 0}
+    {#each commentsArray as comment}
+      <p
+        class="text-sm px-4 md:px-12 gap-2 flex flex-row items-center justify-start w-full"
+      >
+        <strong
+          >{comment.username && comment.username != ""
+            ? comment.username
+            : take(5, comment.id)}</strong
+        >: {comment.comment}
+      </p>
+    {/each}
+  {/if}
+  <!-- {/await} -->
   <form
     class="form px-4 md:px-12 mx-0 gap-2 flex flex-row items-center justify-center w-full"
     on:submit|preventDefault={addComment}

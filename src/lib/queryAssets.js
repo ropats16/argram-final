@@ -32,7 +32,7 @@ function idQuery() {
   return `
 query {
   transactions(tags: [
-      { name: "Contract-Src", values: ["ItMTZxVdxAQIuk-TMEsWNkjtppttGxY3h5d6XRCtnMY"] }
+      { name: "Contract-Src", values: ["Rx4qbEJuJ0kscCabQw9NQf3bo56C9nu2ce8z--GjViA"] }
     ]) {
     edges {
       node {

@@ -4,9 +4,9 @@ import { DeployPlugin, ArweaveSigner } from "warp-contracts-plugin-deploy";
 
 // const SRC = "jEdfetcqnAB_CAzRynrH9p0ekFIIlmaBmXqtJEwZKaE" // PermawebJS 1.0.55 w Comment
 
-// const SRC = "H_5nmRZ5jU6Wnn4esxmQdMBq3AyHZ7lFAWmbjfIS5ic" // OTHENT debugger with Warp
+// const SRC = "Y4pplyAgyq_IzF0vfyJxunQCIanrwOlUSlNVk0pT-6Y" // Latest with Warp
 
-const SRC = "ItMTZxVdxAQIuk-TMEsWNkjtppttGxY3h5d6XRCtnMY" // Latest with Warp
+const SRC = "Rx4qbEJuJ0kscCabQw9NQf3bo56C9nu2ce8z--GjViA" // debugger latest
 
 const toArrayBuffer = (file) =>
   new Promise((resolve, reject) => {

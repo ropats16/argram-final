@@ -4,16 +4,11 @@
     writeContractWOthent,
   } from "permawebjs/contract";
   import { profile } from "../store";
+  import { onMount } from "svelte";
 
   export let id = "";
 
-  async function readLikes() {
-    const res = await readContractWOthent({
-      contractTxId: id,
-    });
-
-    return res.state["likes"];
-  }
+  let likes = {};
 
   async function likePost() {
     const res = await writeContractWOthent({
@@ -28,7 +23,21 @@
     });
 
     console.log("res of like", res);
+
+    likes = await readLikes();
   }
+
+  async function readLikes() {
+    const res = await readContractWOthent({
+      contractTxId: id,
+    });
+
+    return res.state["likes"];
+  }
+
+  onMount(async () => {
+    likes = await readLikes();
+  });
 </script>
 
 <section>

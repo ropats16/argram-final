@@ -57,10 +57,17 @@ export async function handle(state, action) {
 
   // function to add likes
   if (input.function === 'likePost') {
-    if (Object.keys(state.likes).includes(caller)) {
+    if (Object.keys(state.likes).includes(action.caller)) {
+
       throw new ContractError('User has voted!')
+    } else {
+      state.likes[caller] = Object.keys(state.likes).length + 1;
+
+      return { state };
     }
-    state.likes[caller] = Object.keys(state.likes).length + 1;
   }
-  throw new ContractError('input.function not found!')
+
+  else {
+    throw new ContractError('Unrecognised function \"' + input.function + '\"');
+  }
 }
