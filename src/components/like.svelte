@@ -49,7 +49,7 @@
 <section>
   <!-- Calculates number of keys object -->
   <!-- number keys corresponds to the number of likes for a post -->
-  <p>{Object.keys(likes).length}</p>
+  <p class="text-center">{Object.keys(likes).length}</p>
   <!-- button to like a post -->
   <!-- button is disabled if user has already liked post -->
   <button

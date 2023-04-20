@@ -27,7 +27,8 @@ export async function getAssetData() {
           description: sub.node.tags.find(t => t.name === 'Description')?.value,
           type: sub.node.tags.find(t => t.name === 'Type')?.value,
           topics: pluck('value', filter(t => t.name.includes('Topic:'), sub.node.tags)),
-          owner: prop('value', find(propEq('name', 'Creator'), sub.node.tags)) || sub.node.owner.address,
+          owner: sub.node.tags.find(t => t.name === 'Creator')?.value || sub.node.owner.address,
+          ownername: sub.node.tags.find(t => t.name === 'Creator-Name')?.value,
           timestamp: sub.node?.block?.timestamp || Date.now() / 1000
         });
       }

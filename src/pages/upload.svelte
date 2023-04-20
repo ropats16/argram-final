@@ -80,10 +80,15 @@
               >
                 <div class="flex flex-col items-center">
                   <span class="text-gray-400">Select Image* 📷</span>
+                  <br />
                   <span class="text-gray-400 text-xs"
-                    >Valid Image Types are: image/png, image/jpeg, image/gif,
-                    image/jpg, image/webp, image/svg+xml</span
+                    >Valid Image Types are:</span
                   >
+                  <span class="text-gray-400 text-xs"
+                    >image/png, image/jpeg, image/gif, image/jpg, image/webp,
+                    image/svg+xml</span
+                  >
+                  <br />
                   <span class="text-gray-400 text-xs"
                     >Make sure images are 100kB file size</span
                   >
