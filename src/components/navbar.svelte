@@ -1,13 +1,19 @@
 <script>
+  // imports
   import { profile } from "../store.js";
   import { Othent } from "permawebjs/auth";
 
+  // variable to store appended user first and last name
   $: name = $profile ? $profile.given_name + " " + $profile.family_name : "";
 
+  // function to handle a user login
+  // returns the user profile and stores it in $profile which is a cache variable created by us
   async function handleConnect() {
     $profile = await Othent.logIn();
   }
 
+  // function to handle user logout
+  // clears user profile information from cache
   async function handleDisconnect() {
     await Othent.logOut();
     $profile = null;
@@ -31,6 +37,7 @@
           /></svg
         >
       </button>
+      <!-- dropdown for switching pages -->
       <ul class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
         <li><a href="/upload">Upload</a></li>
         <li><a href="/view">View</a></li>
@@ -42,8 +49,11 @@
   </div>
   <div class="navbar-end md:flex gap-4">
     {#if $profile}
+      <!-- displays connected user's name from variable 'name' -->
+      <!-- doubles as the log out button calling handle disconnect on click -->
       <button class="btn btn-ghost" on:click={handleDisconnect}>{name}</button>
     {:else}
+      <!-- connect button to handle log in -->
       <button on:click={handleConnect} class="btn btn-ghost">Connect</button>
     {/if}
   </div>

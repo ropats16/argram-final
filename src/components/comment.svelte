@@ -81,7 +81,7 @@
 <section
   class="hero pb-4 bg-base-100 flex flex-col border-solid border-2 border-slate-300 rounded-lg"
 >
-  <!-- Ensures commentsArray has comments -->
+  <!-- ensures commentsArray has comments -->
   {#if commentsArray.length > 0}
     <!-- maps over elements of commentsArray -->
     <!-- each element is given temp name 'comment' -->
@@ -123,7 +123,8 @@
     </button>
   </form>
 </section>
-<!-- Error handling pop ups -->
+
+<!-- error handling pop ups -->
 <Deploy open={deployDlg} />
 <Error
   open={errorDlg}
