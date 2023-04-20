@@ -22,6 +22,7 @@
     {#if assets.length > 0}
       <div class="flex-col">
         {#each assets as asset}
+          {console.log(assets)}
           <div
             class="hero-content my-5 flex-col md:space-x-4 border-solid border-2 border-slate-300 rounded-lg"
           >
