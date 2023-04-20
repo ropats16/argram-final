@@ -1,8 +1,16 @@
 <script>
+  import { onMount } from "svelte";
   import { getAssetData } from "../lib/queryAssets";
   import Comment from "../components/comment.svelte";
   import { take } from "ramda";
   import Like from "../components/like.svelte";
+
+  let assetData = getAssetData();
+  let assets = [];
+
+  onMount(async () => {
+    assets = await assetData;
+  });
 </script>
 
 <section class="hero min-h-screen bg-base-100 flex flex-col">
@@ -10,7 +18,7 @@
     Images may take a few minutes to update depending on network congestion...
   </p>
   <hr class="w-1/2 mt-2" />
-  {#await getAssetData() then assets}
+  {#await assetData then assets}
     {#if assets.length > 0}
       <div class="flex-col">
         {#each assets as asset}

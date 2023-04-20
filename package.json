@@ -25,7 +25,6 @@
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@execution-machine/sdk": "^0.1.8",
-    "othent": "^1.0.35",
     "permawebjs": "^1.1.14",
     "ramda": "^0.29.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
