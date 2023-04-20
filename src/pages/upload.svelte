@@ -68,8 +68,15 @@
                 for="file"
                 class="bg-gray-200 h-[200px] md:h-[350px] w-full md:w-[500px] grid place-items-center rounded-xl hover:shadow-xl"
               >
-                <div>
-                  <span class="text-gray-400">Select Image 📷</span>
+                <div class="flex flex-col items-center">
+                  <span class="text-gray-400">Select Image* 📷</span>
+                  <span class="text-gray-400 text-xs"
+                    >Valid Image Types are: image/png, image/jpeg, image/gif,
+                    image/jpg, image/webp, image/svg+xml</span
+                  >
+                  <span class="text-gray-400 text-xs"
+                    >Make sure images are 100kB file size</span
+                  >
                 </div>
               </label>
               <input

@@ -13,7 +13,7 @@
   // id variable to get the transaction id of an asset (post) from the view page
   export let id = "";
 
-  // object to handle users trying to add comments on multiple posts
+  // object to handle users' requests to add comments on multiple posts
   let comments = {};
 
   // array storing the comments information for a post
@@ -52,7 +52,7 @@
       deployDlg = false;
       e.target.reset();
 
-      // fetches the latest comments on a post
+      // fetches the latest comments on a post and stores result in commentsArray
       commentsArray = await readComments();
     } catch (e) {
       // error handling to display error in pop up
