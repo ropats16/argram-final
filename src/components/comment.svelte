@@ -1,41 +1,88 @@
 <script>
-  let comments = {};
-  let errorMessage = "";
-  let errorDlg = false;
+  import {
+    writeContractWOthent,
+    readContractWOthent,
+  } from "permawebjs/contract";
+  import { profile } from "../store";
+  import { take } from "ramda";
+  import Deploy from "../dialogs/deploy.svelte";
+  import Error from "../dialogs/error.svelte";
+  import Confirm from "../dialogs/confirm.svelte";
 
   export let id = "";
 
-  async function addComment(e) {
-    const comment = {
-      id: id,
-      text: comments[id],
-    };
+  let comments = {};
+  let commentsData = readComments();
 
-    if (!window.arweaveWallet) {
-      errorMessage = "Arweave Wallet not found!";
-      errorDlg = true;
-      return;
-    }
-    // connnect
-    await window.arweaveWallet.connect([
-      "ACCESS_ADDRESS",
-      "SIGN_TRANSACTION",
-      "DISPATCH",
-    ]);
+  let deployDlg = false;
+  let errorMessage = "";
+  let errorDlg = false;
+  let confirmDlg = false;
+
+  let tx = "";
+
+  async function addComment(e) {
     try {
-      console.log("This is the comment object", comment);
-      // const result = await passComment(comment);
+      deployDlg = true;
+
+      const res = await writeContractWOthent({
+        othentFunction: "sendTransaction",
+        data: {
+          toContractId: id,
+          toContractFunction: "addComment",
+          txnData: {
+            function: "addComment",
+            username: $profile
+              ? $profile.given_name + " " + $profile.family_name
+              : "",
+            comment: comments[id],
+          },
+        },
+      });
+
+      deployDlg = false;
 
       e.target.reset();
+
+      tx = res.transactionId;
+      confirmDlg = true;
     } catch (e) {
+      deployDlg = false;
       errorMessage = e.message;
+      errorDlg = true;
     }
+  }
+
+  async function readComments() {
+    const res = await readContractWOthent({
+      contractTxId: id,
+    });
+    console.log("=========================My contract state", res);
+
+    return res.state["comments"];
   }
 </script>
 
-<section class="hero pb-4 bg-base-100">
+<section
+  class="hero pb-4 bg-base-100 flex flex-col border-solid border-2 border-slate-300 rounded-lg"
+>
+  {#await commentsData then commentsArray}
+    {#if commentsArray.length > 0}
+      {#each commentsArray as comment}
+        <p
+          class="text-sm px-4 md:px-12 gap-2 flex flex-row items-center justify-start w-full"
+        >
+          <strong
+            >{comment.username && comment.username != ""
+              ? comment.username
+              : take(5, comment.id)}</strong
+          >: {comment.comment}
+        </p>
+      {/each}
+    {/if}
+  {/await}
   <form
-    class="form px-4 md:px-12 gap-2 flex flex-row items-center justify-center w-full"
+    class="form px-4 md:px-12 mx-0 gap-2 flex flex-row items-center justify-center w-full"
     on:submit|preventDefault={addComment}
   >
     <div class="form-control w-full">
@@ -53,3 +100,11 @@
     </button>
   </form>
 </section>
+<Deploy open={deployDlg} />
+<Error
+  open={errorDlg}
+  msg={errorMessage}
+  on:cancel={() => (errorDlg = false)}
+/>
+
+<Confirm {tx} open={confirmDlg} on:cancel={() => (confirmDlg = false)} />

@@ -1,9 +1,9 @@
 <script>
   import { profile } from "../store.js";
-  import othent from "othent";
+  import { Othent } from "permawebjs/auth";
 
   async function handleConnect() {
-    $profile = await othent.logIn();
+    $profile = await Othent.logIn();
   }
 </script>
 

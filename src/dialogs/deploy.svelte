@@ -4,5 +4,5 @@
 </script>
 
 <Modal {open} cancel={false}>
-  <h3 class="text-3xl">Deploying to Arweave...</h3>
+  <h3 class="text-3xl">Posting...</h3>
 </Modal>

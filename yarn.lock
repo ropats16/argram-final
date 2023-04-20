@@ -6856,10 +6856,10 @@ pem-jwk@^2.0.0:
   dependencies:
     asn1.js "^5.0.1"
 
-permawebjs@^1.1.12:
-  version "1.1.12"
-  resolved "https://registry.yarnpkg.com/permawebjs/-/permawebjs-1.1.12.tgz#b966dd9ad8103a889e0b36c7626e00096fddf895"
-  integrity sha512-FZ2rR24KW0eYlJSd7yeaa4zD65XflDWs4AUORwXt5qASDb+ziLSCM7hoT+EK/Jfm4lv2k9+IEgRLerZw7dUQ5A==
+permawebjs@^1.1.14:
+  version "1.1.14"
+  resolved "https://registry.yarnpkg.com/permawebjs/-/permawebjs-1.1.14.tgz#301dcb393fd996c58e5d8afd6b2d202159dee526"
+  integrity sha512-DFv87wRYe0yZyRmGDmQyNH1dqTqg+tMcT3dJ27jlLBYQJEwHzl3k9EK3rC5VeoSIbGUIVGufZc+CLfCxRj/Nng==
   dependencies:
     "@bundlr-network/client" "^0.10.5"
     "@execution-machine/sdk" "^0.1.7"
@@ -7180,10 +7180,10 @@ radio-symbol@^2.0.0:
     ansi-green "^0.1.1"
     is-windows "^1.0.1"
 
-ramda@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
-  integrity sha512-9QnLuG/kPVgWvMQ4aODhsBUFKOUmnbUnsSXACv+NCQZcHbeb+v8Lodp8OVxtRULN1/xOyYLLaL6npE6dMq5QTA==
+ramda@^0.29.0:
+  version "0.29.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.29.0.tgz#fbbb67a740a754c8a4cbb41e2a6e0eb8507f55fb"
+  integrity sha512-BBea6L67bYLtdbOqfp8f58fPMqEwx0doL+pAi8TZyp2YWz8R9G8z9x75CZI8W+ftqhFHCpEX2cRnUUXK130iKA==
 
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"

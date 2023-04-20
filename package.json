@@ -26,8 +26,8 @@
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@execution-machine/sdk": "^0.1.8",
     "othent": "^1.0.35",
-    "permawebjs": "^1.1.12",
-    "ramda": "^0.28.0",
+    "permawebjs": "^1.1.14",
+    "ramda": "^0.29.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "rollup-plugin-polyfill-node": "^0.12.0",
     "vite-plugin-notifier": "^0.1.5"
