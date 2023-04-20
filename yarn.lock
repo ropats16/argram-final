@@ -1899,16 +1899,6 @@ accepts@^1.3.5, accepts@^1.3.7:
     mime-types "~2.1.34"
     negotiator "0.6.3"
 
-acorn-walk@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/acorn-walk/-/acorn-walk-8.2.0.tgz#741210f2e2426454508853a2f44d0ab83b7f69c1"
-  integrity sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==
-
-acorn@^8.7.0:
-  version "8.8.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.8.2.tgz#1b2f25db02af965399b9776b0c2c391276d37c4a"
-  integrity sha512-xjIYgE8HBrkpd/sJqOGNspf8uHG+NOHGOw6a/Urj8taM2EXfdNAH2oFcPeIFfsv3+kz/mJrS5VuMqbNLjCa2vw==
-
 aes-js@3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/aes-js/-/aes-js-3.0.0.tgz#e21df10ad6c2053295bcbb8dab40b09dbea87e4d"
@@ -2340,10 +2330,21 @@ apollo-server-types@^3.8.0:
   resolved "https://registry.yarnpkg.com/aproba/-/aproba-2.0.0.tgz#52520b8ae5b569215b354efc0caa3fe1e45a8adc"
   integrity sha512-lYe4Gx7QT+MKGbDsA+Z+he/Wtef0BiwDOlK/XkBrdfsh9J/jPPXbX0tE9x9cl27Tmu5gg3QUbUrQYa/y+KOHPQ==
 
-aptos@^1.3.13, aptos@^1.3.14:
+aptos@^1.3.13:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/aptos/-/aptos-1.8.3.tgz#8c608cae8660c9676b80479380c7bfb51d5a0e6c"
   integrity sha512-lVnJwE+qx+YFJ2gXLvPnz67hJBkYwP0GnkBf1runkChs5FN/8Fxzmlf+q81eifCspC4Yk+03dH27exY1MIOjuA==
+  dependencies:
+    "@noble/hashes" "1.1.3"
+    "@scure/bip39" "1.1.0"
+    axios "0.27.2"
+    form-data "4.0.0"
+    tweetnacl "1.0.3"
+
+aptos@^1.3.14:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/aptos/-/aptos-1.8.4.tgz#f2beb9463f3b751f4925ac220697ccae23adb602"
+  integrity sha512-LWasWcz8+SMj4nCGQzB8kC0P/b2PRraUSjIQmeQH6jJ4O2WqS4MASzQZdk3vkG+i5O2dgLRgDK2QUZaxHqfydQ==
   dependencies:
     "@noble/hashes" "1.1.3"
     "@scure/bip39" "1.1.0"
@@ -2544,10 +2545,20 @@ arweave@=1.11.8:
     bignumber.js "^9.0.2"
     util "^0.12.4"
 
-arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4, arweave@^1.12.4, arweave@^1.13.5:
+arweave@^1.10.13, arweave@^1.10.5, arweave@^1.11.4, arweave@^1.12.4:
   version "1.13.5"
   resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.5.tgz#0bd28aae9d0e9fc66df45217661b08f57658c090"
   integrity sha512-bxXoxmQF1OVXw2QFjD9m29Oo+lwUSvb2mzli494BRFGCfSSTBpE5Fp9f65HmmGEUURCL4xS17J6wBjLm1efrig==
+  dependencies:
+    arconnect "^0.4.2"
+    asn1.js "^5.4.1"
+    base64-js "^1.5.1"
+    bignumber.js "^9.0.2"
+
+arweave@^1.13.5:
+  version "1.13.6"
+  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.13.6.tgz#f98056bd2322a84919f7636ae1883fd680b3cbc1"
+  integrity sha512-8IP0SQhithb+n/lu9Vfyyem97F+twQaELm+DspWC520X0DBwm2eMYI7lwT+eCzI2HjP/tsyc0lDxhokkFgo4IQ==
   dependencies:
     arconnect "^0.4.2"
     asn1.js "^5.4.1"
@@ -3628,30 +3639,30 @@ cssfilter@0.0.10:
   resolved "https://registry.yarnpkg.com/cssfilter/-/cssfilter-0.0.10.tgz#c6d2672632a2e5c83e013e6864a42ce8defd20ae"
   integrity sha512-FAaLDaplstoRsDR8XGYH51znUN0UY7nMc6Z9/fvE8EXGwvJE9hu7W2vHwx1+bd6gCYnln9nLbzxFTrcO9YQDZw==
 
-csv-generate@^4.2.2:
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/csv-generate/-/csv-generate-4.2.2.tgz#b0ae1dca9f608fb8dfbb9df32949652d8f583ade"
-  integrity sha512-Ah/NcMxHMqwQsuL173yp8EOzHrbLh8iyScqTy990b+TJZNjHhy7gs5FfSmyQ2arLC2QVrueO3DYJVQnibJB3WQ==
+csv-generate@^4.2.4:
+  version "4.2.4"
+  resolved "https://registry.yarnpkg.com/csv-generate/-/csv-generate-4.2.4.tgz#42cbe6b4e32fe59531fc1b57f07b5ab509e101d3"
+  integrity sha512-PvEwuRksnW30I1DlZnVuCVMOiff7ZoUXOCMQJ1c0DPKXQkIC87hWvqJ4ztO70ceQMQER1hp/Lajo8KIy7at1PA==
 
-csv-parse@^5.3.6:
-  version "5.3.6"
-  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.3.6.tgz#181d7c12300a60684bb51261ea9a5c3135ba8688"
-  integrity sha512-WI330GjCuEioK/ii8HM2YE/eV+ynpeLvU+RXw4R8bRU8R0laK5zO3fDsc4gH8s472e3Ga38rbIjCAiQh+tEHkw==
+csv-parse@^5.3.8:
+  version "5.3.8"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-5.3.8.tgz#c9919fbc5670fddec09a4b40e25365a2d11956d1"
+  integrity sha512-ird8lzMv9I64oqIVIHdaTbT7Yr55n2C/Nv6m1LxO7nddLEeI67468VQ9Ik+r6lwYbK9kTE1oSqAVcVKc/Uqx6g==
 
-csv-stringify@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-6.3.0.tgz#21ae523c5c0b25f16d8625bde45dc1b4b5b77eb0"
-  integrity sha512-kTnnBkkLmAR1G409aUdShppWUClNbBQZXhrKrXzKYBGw4yfROspiFvVmjbKonCrdGfwnqwMXKLQG7ej7K/jwjg==
+csv-stringify@^6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/csv-stringify/-/csv-stringify-6.3.2.tgz#0d5105dcf6f5a6605262d1a008883120684db164"
+  integrity sha512-dD9gfbxNKa5v90NHiE2Qd6F9I52GtJjGTfowwzqiNDZD/+NPW3h19d2Nvv311a8QUW11rYRobco27nvVAnCrLw==
 
 csv@^6.0.5:
-  version "6.2.8"
-  resolved "https://registry.yarnpkg.com/csv/-/csv-6.2.8.tgz#0eb831a4e0c64794ccd2990e5ddb5148b22d57a0"
-  integrity sha512-QGemEqFr5XgbHcufWwO+qnReFhClbd+6WywKDVqEXmRfGrJHl5fRrlphZUnsky2YAwcCxYJJilPUfaWbuBMfWA==
+  version "6.2.10"
+  resolved "https://registry.yarnpkg.com/csv/-/csv-6.2.10.tgz#5e94bac81c23d1a8eb30ab63cabbb68d2b1f34b7"
+  integrity sha512-aO1dkeMlzWHvtKOdiTeqt7G4SwF/JtJ2fYNOMtlrGiKERD+ASq+QZelGqpFCzHGvZSIhzDtwqRVEgPMkme2BQg==
   dependencies:
-    csv-generate "^4.2.2"
-    csv-parse "^5.3.6"
-    csv-stringify "^6.3.0"
-    stream-transform "^3.2.2"
+    csv-generate "^4.2.4"
+    csv-parse "^5.3.8"
+    csv-stringify "^6.3.2"
+    stream-transform "^3.2.4"
 
 d@1, d@^1.0.1:
   version "1.0.1"
@@ -6694,20 +6705,20 @@ os-tmpdir@~1.0.2:
   resolved "https://registry.yarnpkg.com/os-tmpdir/-/os-tmpdir-1.0.2.tgz#bbe67406c79aa85c5cfec766fe5734555dfa1274"
   integrity sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==
 
-othent@1.0.25:
-  version "1.0.25"
-  resolved "https://registry.yarnpkg.com/othent/-/othent-1.0.25.tgz#db8e715a942536f5bed4195d99ccb32ee4dd2f15"
-  integrity sha512-3rk6QqUhhIZxZNRcGkaKo93SgMQlEuFqmUoQtxyIVFsaabRpEjndXoiVAXx8L6LMwk0gFYS71l/2Wf8WPViGKA==
+othent@^1.0.35:
+  version "1.0.35"
+  resolved "https://registry.yarnpkg.com/othent/-/othent-1.0.35.tgz#2ae4153220753fcfeb70c2406a2db0527a5bbbda"
+  integrity sha512-ildbqOLyM3A2B+86QcNxWnirc1/nMKXtAUK4mJIl1EgKOAcomKD8n/Qho6SlgPrMkGRdqufSquESvspXhG1y2Q==
   dependencies:
     "@auth0/auth0-spa-js" "^2.0.4"
     axios "^1.3.4"
     crypto-hash "^2.0.1"
     jwt-decode "^3.1.2"
 
-othent@^1.0.16:
-  version "1.0.26"
-  resolved "https://registry.yarnpkg.com/othent/-/othent-1.0.26.tgz#cb28293afc065c35e32deeee24ed799452c85966"
-  integrity sha512-yRRWqRdlRzyKJDJy4v25ssh3Vc9kzsrgDdrwzAWyw0HqG05SxWuO4INgddwtxtniOl/S8ya7JKl1dVWXgHdkQA==
+othent@^1.0.37:
+  version "1.0.37"
+  resolved "https://registry.yarnpkg.com/othent/-/othent-1.0.37.tgz#75e5c0a55d7fb7a1de5779e49768c46e2c0cba8f"
+  integrity sha512-9gY9OsscQRJiaN+ZeGtyJ3o7OiboYtjZaneliyx2KvNSucrJyxf/A+v3V0jG4IOvMhXwskyJK2qoEtVkksgBgQ==
   dependencies:
     "@auth0/auth0-spa-js" "^2.0.4"
     axios "^1.3.4"
@@ -6845,17 +6856,17 @@ pem-jwk@^2.0.0:
   dependencies:
     asn1.js "^5.0.1"
 
-permawebjs@^1.0.56:
-  version "1.0.56"
-  resolved "https://registry.yarnpkg.com/permawebjs/-/permawebjs-1.0.56.tgz#15ec0bd5ee4ee9bf4d9fd7403414795045e6324f"
-  integrity sha512-MaXopBNhmkKhDAz/uR9J3LVNfrzQzqRe0DPG7m6JYBn4PSG8AIP81OKqV+dI0/Yg8IbdHi5MHNQ+mLIzKqkWXA==
+permawebjs@^1.1.12:
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/permawebjs/-/permawebjs-1.1.12.tgz#b966dd9ad8103a889e0b36c7626e00096fddf895"
+  integrity sha512-FZ2rR24KW0eYlJSd7yeaa4zD65XflDWs4AUORwXt5qASDb+ziLSCM7hoT+EK/Jfm4lv2k9+IEgRLerZw7dUQ5A==
   dependencies:
     "@bundlr-network/client" "^0.10.5"
     "@execution-machine/sdk" "^0.1.7"
     "@three-em/node" "^0.3.22"
     arweave "^1.13.5"
     arweave-mnemonic-keys "^0.0.9"
-    othent "^1.0.16"
+    othent "^1.0.37"
     warp-contracts "^1.4.1"
     warp-contracts-plugin-deploy "^1.0.3"
 
@@ -7756,10 +7767,10 @@ stream-http@^3.2.0:
     readable-stream "^3.6.0"
     xtend "^4.0.2"
 
-stream-transform@^3.2.2:
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/stream-transform/-/stream-transform-3.2.2.tgz#3d6083d6582eddac233645fcee574fc56ebeb184"
-  integrity sha512-DHZQPNxvjU2qdQlGcpitn8pkJHQVTqdshtgXaLz6Vc5VCAognbGuuwGS5ugeqGVnyw8j4h89QcV8cwm0D1+V0A==
+stream-transform@^3.2.4:
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/stream-transform/-/stream-transform-3.2.4.tgz#cc37b7950a43f97a89b6472745ec9ef9850c4948"
+  integrity sha512-YoZm/eoh6f/MH7uHkq+NK3fx3JkyXbck7FcTpJavwEUg0aMINqMPkDj5uNW0CoRy7c/2NSJm0HvoyFv6dVauPA==
 
 streaming-json-stringify@3:
   version "3.1.0"
@@ -8371,14 +8382,6 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-vm2@3.9.13:
-  version "3.9.13"
-  resolved "https://registry.yarnpkg.com/vm2/-/vm2-3.9.13.tgz#774a1a3d73b9b90b1aa45bcc5f25e349f2eef649"
-  integrity sha512-0rvxpB8P8Shm4wX2EKOiMp7H2zq+HUE/UwodY0pCZXs9IffIKZq6vUti5OgkVCTakKo9e/fgO4X1fkwfjWxE3Q==
-  dependencies:
-    acorn "^8.7.0"
-    acorn-walk "^8.2.0"
-
 walker@^1.0.8:
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/walker/-/walker-1.0.8.tgz#bd498db477afe573dc04185f011d3ab8a8d7653f"
@@ -8391,36 +8394,14 @@ warning-symbol@^0.1.0:
   resolved "https://registry.yarnpkg.com/warning-symbol/-/warning-symbol-0.1.0.tgz#bb31dd11b7a0f9d67ab2ed95f457b65825bbad21"
   integrity sha512-1S0lwbHo3kNUKA4VomBAhqn4DPjQkIKSdbOin5K7EFUQNwyIKx+wZMGXKI53RUjla8V2B8ouQduUlgtx8LoSMw==
 
-warp-contracts-plugin-deploy@^1.0.1, warp-contracts-plugin-deploy@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/warp-contracts-plugin-deploy/-/warp-contracts-plugin-deploy-1.0.3.tgz#9ca7cd53b4a7cd1b015881f1d369659bb6f9075b"
-  integrity sha512-zDF/yqHbxIDImtVKxE/hbIz824PjPOc0aXONQtnR7do0MFdF7eJqeAAA5a2W5WTHN3cplvej6y7vSv6f/E2dEg==
+warp-contracts-plugin-deploy@^1.0.3, warp-contracts-plugin-deploy@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/warp-contracts-plugin-deploy/-/warp-contracts-plugin-deploy-1.0.4.tgz#eb4a647348f886e5947567b52af8aec0f998f7f0"
+  integrity sha512-3Da0DXY4bULv5Erg7g4bygjkZvukCckHOX27JYRmllITiDAbAa9Pe1WHuEl2wsaNw9tbj2eqtE4EHoNhqgIbnw==
   dependencies:
     arbundles "^0.7.3"
     arlocal "^1.1.59"
     node-stdlib-browser "^1.2.0"
-
-warp-contracts@^1.3.4-beta.0:
-  version "1.3.4-beta.2"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.3.4-beta.2.tgz#9920256cb98d9cf4020b2c0856d8ef090a8bf94f"
-  integrity sha512-kMuqFylzzczJg1rlkFwmKnh+oJsLakmYyuXy5Fwk5UybRumD26Z2yGVgcUBLFze//o6U8Mmc3LpVIwuOdIOLWw==
-  dependencies:
-    "@idena/vrf-js" "^1.0.1"
-    archiver "^5.3.0"
-    arweave "^1.12.4"
-    async-mutex "^0.4.0"
-    bignumber.js "9.1.1"
-    elliptic "^6.5.4"
-    events "3.3.0"
-    fast-copy "^3.0.0"
-    level "^8.0.0"
-    memory-level "^1.0.0"
-    safe-stable-stringify "2.4.1"
-    stream-buffers "^3.0.2"
-    unzipit "^1.4.0"
-    vm2 "3.9.13"
-    warp-isomorphic "1.0.4"
-    warp-wasm-metering "1.0.1"
 
 warp-contracts@^1.4.1:
   version "1.4.1"

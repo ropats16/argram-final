@@ -1,13 +1,12 @@
 export async function handle(state, action) {
   const { input, caller } = action;
   const balances = state.balances;
-  if (action.input.function == "__init") {
-    state.owner = action.caller;
-  }
+
   // function to get owner
   if (input.function === 'getOwner') {
     return { result: state.owner }
   }
+
   // function to get balances
   if (input.function === "balance") {
     let target;
@@ -49,10 +48,19 @@ export async function handle(state, action) {
 
     return { state }
   }
+
   // function to update comments
   if (input.function === 'addComment') {
-    state.comments.push({ comment: input.comment, user: input.user });
+    state.comments.push({ comment: input.txnData.comment, username: input.txnData.username, id: action.caller });
     return { state };
+  }
+
+  // function to add likes
+  if (input.function === 'likePost') {
+    if (Object.keys(state.likes).includes(caller)) {
+      throw new ContractError('User has voted!')
+    }
+    state.likes[caller] = Object.keys(state.likes).length + 1;
   }
   throw new ContractError('input.function not found!')
 }
