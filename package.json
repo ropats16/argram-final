@@ -13,22 +13,21 @@
     "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.14",
     "daisyui": "^2.51.5",
-    "postcss": "^8.4.21",
+    "postcss": "8.4.22",
     "svelte": "^3.55.1",
-    "tailwindcss": "^3.2.7",
+    "tailwindcss": "3.3.1",
     "tinro": "^0.6.12",
-    "vite": "^4.2.0",
-    "warp-contracts": "^1.4.1",
-    "warp-contracts-plugin-deploy": "^1.0.4"
+    "vite": "^4.2.0"
   },
   "dependencies": {
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
-    "@execution-machine/sdk": "^0.1.8",
     "permawebjs": "^1.1.14",
     "ramda": "^0.29.0",
     "rollup-plugin-node-polyfills": "^0.2.1",
     "rollup-plugin-polyfill-node": "^0.12.0",
-    "vite-plugin-notifier": "^0.1.5"
+    "vite-plugin-notifier": "^0.1.5",
+    "warp-contracts": "^1.4.1",
+    "warp-contracts-plugin-deploy": "^1.0.4"
   }
 }
