@@ -40,9 +40,9 @@
             <div class="w-[350px] flex flex-row items-center justify-between">
               <div class="w-7/8 mx-0">
                 <div class="flex justify-between">
-                  <p class="text-sm">
+                  <p class="text-md">
                     {asset.ownername ? asset.ownername : take(5, asset.owner)}
-                    <strong class="text-md">{asset.title}</strong>
+                    <strong class="text-lg">{asset.title}</strong>
                   </p>
                 </div>
                 <p class="text-sm text-gray-600">{asset.description}</p>

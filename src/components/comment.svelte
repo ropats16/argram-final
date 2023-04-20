@@ -81,23 +81,24 @@
 <section
   class="hero pb-4 bg-base-100 flex flex-col border-solid border-2 border-slate-300 rounded-lg"
 >
-  <!-- ensures commentsArray has comments -->
-  {#if commentsArray.length > 0}
-    <!-- maps over elements of commentsArray -->
-    <!-- each element is given temp name 'comment' -->
-    {#each commentsArray as comment}
-      <p
-        class="text-sm px-4 md:px-12 gap-2 flex flex-row items-center justify-start w-full"
-      >
-        <!-- renders commenter's username or id -->
-        <strong
-          >{comment.username && comment.username != ""
-            ? comment.username
-            : take(5, comment.id)}</strong
-        >: {comment.comment}
-      </p>
-    {/each}
-  {/if}
+  <div class="flex flex-col self-start m-2">
+    <!-- ensures commentsArray has comments -->
+    {#if commentsArray.length > 0}
+      <!-- maps over elements of commentsArray -->
+      <!-- each element is given temp name 'comment' -->
+      {#each commentsArray as comment}
+        <p class="text-sm px-4 md:px-12 gap-2 flex flex-row w-full">
+          <!-- renders commenter's username or id -->
+          <strong
+            >{comment.username && comment.username != ""
+              ? comment.username
+              : take(5, comment.id)}</strong
+          >: {comment.comment}
+        </p>
+      {/each}
+    {/if}
+  </div>
+  <hr class="w-10/12" />
   <!-- input form for calling 'addComment' function -->
   <form
     class="form px-4 md:px-12 mx-0 gap-2 flex flex-row items-center justify-center w-full"
