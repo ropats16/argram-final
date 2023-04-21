@@ -1,4 +1,4 @@
-# ArGram Demo v0
+# ArGram Final
 
 Refer to the following steps to get setup:
 
@@ -14,4 +14,4 @@ yarn
 yarn dev
 ```
 
-Open the link provided in the browser or visit [http://localhost:5173](http://localhost:5173).
+Open the link provided in the browser or visit [http://localhost:3000](http://localhost:3000).
