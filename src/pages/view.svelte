@@ -10,10 +10,6 @@
 
   // variable bound to getAssetData function
   let assetData = getAssetData();
-
-  onMount(async () => {
-    $profile = await Othent.userDetails();
-  });
 </script>
 
 <!-- view page ui -->

@@ -23,7 +23,7 @@ const warp = WarpFactory.forMainnet().use(new DeployPlugin());
 
 // function to post asset to network using othent as authentication
 // takes in 'asset' information
-export async function postWOthent(asset) {
+export async function postAsset(asset) {
 
   // converts file to `ArrayBuffer`
   const data = await toArrayBuffer(asset.file);

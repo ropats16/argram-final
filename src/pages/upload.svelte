@@ -1,6 +1,6 @@
 <script>
   // imports
-  import { postWOthent } from "../lib/post";
+  import { postAsset } from "../lib/post";
   import Deploy from "../dialogs/deploy.svelte";
   import Error from "../dialogs/error.svelte";
   import Confirm from "../dialogs/confirm.svelte";
@@ -38,7 +38,7 @@
 
       // function call to 'postAsset' function passing in created 'asset' object
       // const result = await postAsset(asset);
-      const result = await postWOthent(asset);
+      const result = await postAsset(asset);
 
       // closes progress pop up on successful post and resets user inputs
       deployDlg = false;

@@ -4,7 +4,7 @@
   import { Othent } from "permawebjs/auth";
 
   // function to handle a user login
-  // returns the user profile and stores it in $profile which is a cache variable created
+  // returns the user profile and stores it in $profile, a cache variable
   async function handleConnect() {
     $profile = await Othent.logIn();
   }
