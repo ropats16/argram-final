@@ -40,9 +40,7 @@
           toContractFunction: "addComment",
           txnData: {
             function: "addComment",
-            username: $profile
-              ? $profile.given_name + " " + $profile.family_name
-              : "",
+            username: $profile ? $profile.name : "",
             comment: comments[id],
           },
         },

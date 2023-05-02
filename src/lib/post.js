@@ -1,11 +1,10 @@
 // imports
 import { split, map, trim } from "ramda";
 import { WarpFactory } from "warp-contracts";
-import { DeployPlugin, ArweaveSigner } from "warp-contracts-plugin-deploy";
+import { DeployPlugin } from "warp-contracts-plugin-deploy";
 import { createAndPostTransactionWOthent } from "permawebjs/transaction";
 
 // transaction id of contract source
-// const SRC = "Rx4qbEJuJ0kscCabQw9NQf3bo56C9nu2ce8z--GjViA" // debugger latest
 const SRC = "0amEJwWCVlAKcepy-abdYJHxuYxGZyxSQIw7MX6UtGU" // tester
 
 // function to convert input image to type `ArrayBuffer`
@@ -31,14 +30,19 @@ export async function postWOthent(asset) {
 
   // array of input tags
   const inputTags = [
+    // Content mime (media) type (For eg, "image/png")
     { name: "Content-Type", value: asset.file.type },
+    // Help network identify post as SmartWeave Contract
     { name: "App-Name", value: "SmartWeaveContract" },
     { name: "App-Version", value: "0.3.0" },
+    // Link post to contract source
     { name: "Contract-Src", value: SRC },
+    // Initial state for our post (as a contract instance)
     {
       name: "Init-State",
       value: JSON.stringify({
         creator: asset.userid,
+        owner: asset.userid,
         ticker: "ARGRAM-ASSET",
         balances: {
           [asset.userid]: 10000
@@ -49,6 +53,7 @@ export async function postWOthent(asset) {
       }),
     },
     { name: 'Creator-Name', value: asset.username },
+    // Standard tags following ANS-110 standard for discoverability of asset
     { name: 'Creator', value: asset.userid },
     { name: 'Title', value: asset.title },
     { name: 'Description', value: asset.description },
@@ -60,7 +65,7 @@ export async function postWOthent(asset) {
     inputTags.push({ name: 'Topic:' + t, value: t });
   });
 
-  // function call to create post referencing the contract source
+  // function call to create post using othent for signing
   const transaction = await createAndPostTransactionWOthent({
     othentFunction: 'uploadData',
     data: data,

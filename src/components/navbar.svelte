@@ -3,9 +3,6 @@
   import { profile } from "../store.js";
   import { Othent } from "permawebjs/auth";
 
-  // variable to store appended user first and last name
-  $: name = $profile ? $profile.given_name + " " + $profile.family_name : "";
-
   // function to handle a user login
   // returns the user profile and stores it in $profile which is a cache variable created
   async function handleConnect() {
@@ -51,7 +48,9 @@
     {#if $profile}
       <!-- displays connected user's name from variable 'name' -->
       <!-- doubles as the log out button calling handle disconnect on click -->
-      <button class="btn btn-ghost" on:click={handleDisconnect}>{name}</button>
+      <button class="btn btn-ghost" on:click={handleDisconnect}
+        >{$profile.name}</button
+      >
     {:else}
       <!-- connect button to handle log in -->
       <button on:click={handleConnect} class="btn btn-ghost">Connect</button>

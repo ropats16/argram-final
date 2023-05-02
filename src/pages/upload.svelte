@@ -28,7 +28,7 @@
       title,
       description,
       topics,
-      username: $profile.given_name + " " + $profile.family_name,
+      username: $profile.name,
       userid: $profile.contract_id,
     };
 

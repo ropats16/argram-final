@@ -4,9 +4,16 @@
   import Comment from "../components/comment.svelte";
   import { take } from "ramda";
   import Like from "../components/like.svelte";
+  import { onMount } from "svelte";
+  import { Othent } from "permawebjs/auth";
+  import { profile } from "../store";
 
   // variable bound to getAssetData function
   let assetData = getAssetData();
+
+  onMount(async () => {
+    $profile = await Othent.userDetails();
+  });
 </script>
 
 <!-- view page ui -->
