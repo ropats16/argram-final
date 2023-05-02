@@ -16,6 +16,6 @@
       to show up on the network.
     </blockquote>
     -->
-    <a href="/view" class="link" target="_blank">View Posts</a>
+    <a href="/view" class="link">View Posts</a>
   </div>
 </Modal>
