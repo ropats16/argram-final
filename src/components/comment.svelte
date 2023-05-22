@@ -65,7 +65,7 @@
   // requires the post's transaction id (received from View Page in the 'id' var)
   async function readComments() {
     const res = await readContractWOthent({
-      apiId: "d9608535fae25a6177a28c6e824c84e8",
+      apiId: "YOUR_API_KEY",
       contractTxId: id,
     });
 
