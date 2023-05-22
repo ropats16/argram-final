@@ -67,6 +67,7 @@ export async function postAsset(asset) {
 
   // function call to create post using othent for signing
   const transaction = await createAndPostTransactionWOthent({
+    apiId: "YOUR_API_KEY",
     othentFunction: 'uploadData',
     data: data,
     tags: inputTags,

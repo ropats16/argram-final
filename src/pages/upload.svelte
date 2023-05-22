@@ -37,7 +37,6 @@
       deployDlg = true;
 
       // function call to 'postAsset' function passing in created 'asset' object
-      // const result = await postAsset(asset);
       const result = await postAsset(asset);
 
       // closes progress pop up on successful post and resets user inputs

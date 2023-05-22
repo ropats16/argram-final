@@ -17,6 +17,7 @@
   async function likePost() {
     // function to call `likePost` function from post's contract\
     const res = await writeContractWOthent({
+      apiId: "YOUR_API_KEY",
       othentFunction: "sendTransaction",
       data: {
         toContractId: id,
@@ -34,6 +35,7 @@
   // reads the state of a post and returns the likes object
   async function readLikes() {
     const res = await readContractWOthent({
+      apiId: "d9608535fae25a6177a28c6e824c84e8",
       contractTxId: id,
     });
 

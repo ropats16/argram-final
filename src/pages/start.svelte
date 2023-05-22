@@ -6,7 +6,9 @@
   // function to handle a user login
   // returns the user profile and stores it in $profile, a cache variable
   async function handleConnect() {
-    $profile = await Othent.logIn();
+    $profile = await Othent.logIn({
+      apiId: "YOUR_API_KEY",
+    });
   }
 </script>
 
