@@ -35,7 +35,7 @@
   // reads the state of a post and returns the likes object
   async function readLikes() {
     const res = await readContractWOthent({
-      apiId: "d9608535fae25a6177a28c6e824c84e8",
+      apiId: "YOUR_API_KEY",
       contractTxId: id,
     });
 
