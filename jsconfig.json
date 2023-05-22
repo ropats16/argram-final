@@ -9,6 +9,7 @@
      * `import type` instead of `import` for Types.
      */
     "importsNotUsedAsValues": "error",
+    "ignoreDeprecations": "5.0",
     "isolatedModules": true,
     "resolveJsonModule": true,
     /**
@@ -29,5 +30,9 @@
    * Use global.d.ts instead of compilerOptions.types
    * to avoid limiting type declarations.
    */
-  "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.svelte"]
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.js",
+    "src/**/*.svelte"
+  ]
 }
