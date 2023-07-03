@@ -14,6 +14,7 @@ dist-ssr
 wallet.json
 src/utils/functionId.js
 yarn.lock
+.env
 
 # Editor directories and files
 .vscode
