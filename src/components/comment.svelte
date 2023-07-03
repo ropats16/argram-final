@@ -3,7 +3,7 @@
   import {
     writeContractWOthent,
     readContractWOthent,
-  } from "permawebjs/contract";
+  } from "arweavekit/contract";
   import { profile } from "../store";
   import { take } from "ramda";
   import Deploy from "../dialogs/deploy.svelte";
@@ -34,7 +34,7 @@
       // sends function name, username and comment text as inputs
       const res = await writeContractWOthent({
         // function name to indicate writing to a contract
-        apiId: "YOUR_API_KEY",
+        apiId: import.meta.env.VITE_OTHENT_API_ID,
         othentFunction: "sendTransaction",
         data: {
           toContractId: id,
@@ -65,7 +65,7 @@
   // requires the post's transaction id (received from View Page in the 'id' var)
   async function readComments() {
     const res = await readContractWOthent({
-      apiId: "YOUR_API_KEY",
+      apiId: import.meta.env.VITE_OTHENT_API_ID,
       contractTxId: id,
     });
 
@@ -79,7 +79,7 @@
 </script>
 
 <section
-  class="hero pb-4 bg-base-100 flex flex-col border-solid border-2 border-slate-300 rounded-lg"
+  class=" pb-4 bg-black flex flex-col self-center border-solid border-2 border-slate-300 rounded-lg"
 >
   <div class="flex flex-col self-start m-2">
     <!-- ensures commentsArray has comments -->
@@ -98,13 +98,13 @@
       {/each}
     {/if}
   </div>
-  <hr class="w-10/12" />
+  <hr class="w-10/12 self-center" />
   <!-- input form for calling 'addComment' function -->
   <form
     class="form px-4 md:px-12 mx-0 gap-2 flex flex-row items-center justify-center w-full"
     on:submit|preventDefault={addComment}
   >
-    <div class="form-control w-full">
+    <div class="form-control w-full flex">
       <label for="comment" class="label">Comments</label>
       <!-- input field for comment text -->
       <!-- bind:value adds the comment text to the 'comments' variable -->
@@ -115,11 +115,10 @@
         required
         placeholder="Enter comment to enable"
       />
-      <p class="label text-sm text-gray-400">Enter a comment</p>
     </div>
     <!-- button to submit comment form -->
     <!-- button is disabled until valid comment is passed in -->
-    <button disabled={!comments[id]} class="btn btn-block w-1/4">
+    <button disabled={!comments[id]} class="btn btn-block w-1/4 self-end">
       Comment
     </button>
   </form>

@@ -3,7 +3,7 @@
   import {
     readContractWOthent,
     writeContractWOthent,
-  } from "permawebjs/contract";
+  } from "arweavekit/contract";
   import { profile } from "../store";
   import { onMount } from "svelte";
 
@@ -17,7 +17,7 @@
   async function likePost() {
     // function to call `likePost` function from post's contract\
     const res = await writeContractWOthent({
-      apiId: "YOUR_API_KEY",
+      apiId: import.meta.env.VITE_OTHENT_API_ID,
       othentFunction: "sendTransaction",
       data: {
         toContractId: id,
@@ -35,7 +35,7 @@
   // reads the state of a post and returns the likes object
   async function readLikes() {
     const res = await readContractWOthent({
-      apiId: "YOUR_API_KEY",
+      apiId: import.meta.env.VITE_OTHENT_API_ID,
       contractTxId: id,
     });
 

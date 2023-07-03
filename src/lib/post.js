@@ -2,10 +2,11 @@
 import { split, map, trim } from "ramda";
 import { WarpFactory } from "warp-contracts";
 import { DeployPlugin } from "warp-contracts-plugin-deploy";
-import { createAndPostTransactionWOthent } from "permawebjs/transaction";
+import { createAndPostTransactionWOthent } from "arweavekit/transaction";
 
 // transaction id of contract source
-const SRC = "0amEJwWCVlAKcepy-abdYJHxuYxGZyxSQIw7MX6UtGU" // tester
+const SRC = "S2wyHzCZZK--7pO10rI5IJBdcRq3dKnfE_H33aCjTWk"; // tester
+// const SRC = "OVPnzb3qGL2PoVw2a7hIfqJZ9jRjVy7E0af-HHAoBmI";
 
 // function to convert input image to type `ArrayBuffer`
 // takes in image file
@@ -24,7 +25,6 @@ const warp = WarpFactory.forMainnet().use(new DeployPlugin());
 // function to post asset to network using othent as authentication
 // takes in 'asset' information
 export async function postAsset(asset) {
-
   // converts file to `ArrayBuffer`
   const data = await toArrayBuffer(asset.file);
 
@@ -45,37 +45,40 @@ export async function postAsset(asset) {
         owner: asset.userid,
         ticker: "ARGRAM-ASSET",
         balances: {
-          [asset.userid]: 10000
+          [asset.userid]: 10000,
         },
         contentType: asset.file.type,
         comments: [],
         likes: {},
       }),
     },
-    { name: 'Creator-Name', value: asset.username },
+    { name: "Creator-Name", value: asset.username },
     // Standard tags following ANS-110 standard for discoverability of asset
-    { name: 'Creator', value: asset.userid },
-    { name: 'Title', value: asset.title },
-    { name: 'Description', value: asset.description },
-    { name: 'Type', value: 'image' },
+    { name: "Creator", value: asset.userid },
+    { name: "Title", value: asset.title },
+    { name: "Description", value: asset.description },
+    { name: "Type", value: "image" },
   ];
 
   // adding hashtags passed in by users to the 'inputTags' array
-  map(trim, split(',', asset.topics)).forEach(t => {
-    inputTags.push({ name: 'Topic:' + t, value: t });
+  map(trim, split(",", asset.topics)).forEach((t) => {
+    inputTags.push({ name: "Topic:" + t, value: t });
   });
 
   // function call to create post using othent for signing
   const transaction = await createAndPostTransactionWOthent({
-    apiId: "YOUR_API_KEY",
-    othentFunction: 'uploadData',
+    apiId: import.meta.env.VITE_OTHENT_API_ID,
+    othentFunction: "uploadData",
     data: data,
     tags: inputTags,
-    useBundlr: true
+    useBundlr: true,
   });
 
   // registering transaction with warp
-  const { contractTxId } = await warp.register(transaction.transactionId, 'node1');
+  const { contractTxId } = await warp.register(
+    transaction.transactionId,
+    "node1"
+  );
 
   console.log("Othent Arweave Txn Res", contractTxId);
 
